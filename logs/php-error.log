@@ -1,0 +1,78 @@
+[04-Jan-2019 11:25:00 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in D:\wamp\www\conexe\models\core\database.php:193
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\database.php(99): Database->debug()
+#1 D:\wamp\www\conexe\models\core\general.php(24): Database->run('SELECT * FROM m...')
+#2 D:\wamp\www\conexe\models\core\controller.php(28): General->getFeatured(Array)
+#3 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#4 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#5 {main}
+  thrown in D:\wamp\www\conexe\models\core\database.php on line 193
+[04-Jan-2019 11:29:02 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in D:\wamp\www\conexe\models\core\database.php:193
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\database.php(99): Database->debug()
+#1 D:\wamp\www\conexe\models\core\general.php(24): Database->run('SELECT * FROM m...')
+#2 D:\wamp\www\conexe\models\core\controller.php(28): General->getFeatured(Array)
+#3 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#4 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#5 {main}
+  thrown in D:\wamp\www\conexe\models\core\database.php on line 193
+[04-Jan-2019 11:29:55 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in D:\wamp\www\conexe\models\core\database.php:193
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\database.php(99): Database->debug()
+#1 D:\wamp\www\conexe\models\core\general.php(24): Database->run('SELECT * FROM m...')
+#2 D:\wamp\www\conexe\models\core\controller.php(28): General->getFeatured(Array)
+#3 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#4 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#5 {main}
+  thrown in D:\wamp\www\conexe\models\core\database.php on line 193
+[04-Jan-2019 11:31:47 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in D:\wamp\www\conexe\models\core\database.php:193
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\database.php(99): Database->debug()
+#1 D:\wamp\www\conexe\models\core\general.php(24): Database->run('SELECT * FROM m...')
+#2 D:\wamp\www\conexe\models\core\controller.php(28): General->getFeatured(Array)
+#3 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#4 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#5 {main}
+  thrown in D:\wamp\www\conexe\models\core\database.php on line 193
+[04-Jan-2019 11:32:11 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in D:\wamp\www\conexe\models\core\database.php:193
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\database.php(99): Database->debug()
+#1 D:\wamp\www\conexe\models\core\general.php(24): Database->run('SELECT * FROM m...')
+#2 D:\wamp\www\conexe\models\core\controller.php(28): General->getFeatured(Array)
+#3 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#4 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#5 {main}
+  thrown in D:\wamp\www\conexe\models\core\database.php on line 193
+[04-Jan-2019 12:41:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function p() in D:\wamp\www\conexe\index.php:9
+Stack trace:
+#0 {main}
+  thrown in D:\wamp\www\conexe\index.php on line 9
+[04-Jan-2019 12:42:40 UTC] PHP Warning:  openssl_encrypt(): The authenticated tag cannot be provided for cipher that doesn not support AEAD in D:\wamp\www\conexe\models\core\helper.php on line 334
+[04-Jan-2019 12:42:40 UTC] PHP Stack trace:
+[04-Jan-2019 12:42:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[04-Jan-2019 12:42:40 UTC] PHP   2. Helper->encrypt() D:\wamp\www\conexe\index.php:8
+[04-Jan-2019 12:42:40 UTC] PHP   3. openssl_encrypt() D:\wamp\www\conexe\models\core\helper.php:334
+[04-Jan-2019 12:46:50 UTC] PHP Notice:  Undefined variable: cypher in D:\wamp\www\conexe\models\core\helper.php on line 335
+[04-Jan-2019 12:46:50 UTC] PHP Stack trace:
+[04-Jan-2019 12:46:50 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[04-Jan-2019 12:46:50 UTC] PHP   2. Helper->encrypt() D:\wamp\www\conexe\index.php:8
+[04-Jan-2019 12:46:50 UTC] PHP Warning:  openssl_encrypt(): Unknown cipher algorithm in D:\wamp\www\conexe\models\core\helper.php on line 335
+[04-Jan-2019 12:46:50 UTC] PHP Stack trace:
+[04-Jan-2019 12:46:50 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[04-Jan-2019 12:46:50 UTC] PHP   2. Helper->encrypt() D:\wamp\www\conexe\index.php:8
+[04-Jan-2019 12:46:50 UTC] PHP   3. openssl_encrypt() D:\wamp\www\conexe\models\core\helper.php:335
+[04-Jan-2019 12:48:49 UTC] PHP Catchable fatal error:  Object of class Helper could not be converted to string in D:\wamp\www\conexe\models\core\helper.php on line 334
+[04-Jan-2019 12:48:49 UTC] PHP Stack trace:
+[04-Jan-2019 12:48:49 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[04-Jan-2019 12:48:49 UTC] PHP   2. Helper->encrypt() D:\wamp\www\conexe\index.php:8
+[04-Jan-2019 13:10:42 UTC] PHP Fatal error:  Cannot declare class ioncube\phpOpensslCryptor\Cryptor, because the name is already in use in D:\wamp\www\conexe\models\core\cryptor.php on line 4
+[04-Jan-2019 13:10:42 UTC] PHP Stack trace:
+[04-Jan-2019 13:10:42 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[04-Jan-2019 13:10:42 UTC] PHP   2. Helper->encrypt() D:\wamp\www\conexe\index.php:8
+[04-Jan-2019 13:10:42 UTC] PHP   3. spl_autoload_call() D:\wamp\www\conexe\models\core\helper.php:331
+[04-Jan-2019 13:10:42 UTC] PHP   4. Autoloader::loader() D:\wamp\www\conexe\models\core\helper.php:331
+[04-Jan-2019 13:11:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Cryptor::Dencrypt() in D:\wamp\www\conexe\models\core\helper.php:338
+Stack trace:
+#0 D:\wamp\www\conexe\index.php(11): Helper->decrypt('F8UmSChCd3DzfsT...')
+#1 {main}
+  thrown in D:\wamp\www\conexe\models\core\helper.php on line 338

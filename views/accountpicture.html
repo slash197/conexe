@@ -1,0 +1,44 @@
+<div class="account" style="min-height: 400px">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<img src="{IMAGE}" class="profile h100" />
+			</div>
+			<div class="span7">
+				<h1>hi {NAME}!<span>nice to have you back</span></h1>
+				
+				{ALERT}
+				
+				<form action="" method="post" enctype="multipart/form-data">
+					
+					<input type="hidden" name="act" value="accountpicture-update" />
+					
+					<p style="margin: 40px 0px">Upload profile picture<br /><input type="file" name="image" /></p>
+					<p><button class="btn btn-info">Save changes</button></p>
+				</form>
+				
+			</div>
+			<div class="span3 menu">
+				<h2>Account settings</h2>
+				
+				<p><a href="account">Profile</a></p>
+				<p><a href="account-picture" class="selected">Change profile picture</a></p>
+				<p><a href="account-email">Change email and password</a></p>
+				<p><a href="account-newsletter">Change newsletter subscription</a></p>
+				<p><a href="?act=account-delete">Delete account</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="uf">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12 text-center">
+				<h1>Don’t know who to help?</h1>
+				<p>Give to our universal fund and help more moms.</p>
+				<a class="btn btn-info" href="universal-fund">give to our<br />universal fund</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="box w100">
+	<h2>{PAGE_TITLE}</h2>
+	<h4>{PAGE_HINT}</h4>
+	
+	<div class="toolbar clearfix">
+		<button class="btn btn-ico btn-back-to-list"><span class="ico ico-arrow-left2"></span></button>
+	</div>
+	
+	<form class="must-process" onsubmit="return false">
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Mom</label></div>
+			<div class="span8"><select name="mom_id">{MOMS}</select></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Date</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12 dp" name="date" value="{DATE}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Description</label></div>
+			<div class="span8"><textarea class="span12" rows="8" name="text">{TEXT}</textarea></div>
+		</div>
+
+		<p class="save"><button class="btn btn-success btn-submit"><span class="ico ico-check"></span>Save</button></p>
+	</form>
+	
+</div>

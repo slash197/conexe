@@ -1,0 +1,105 @@
+<div class="box w100">
+	<h2>{PAGE_TITLE}</h2>
+	<h4>{PAGE_HINT}</h4>
+	
+	<div class="toolbar clearfix">
+		<button class="btn btn-ico btn-back-to-list"><span class="ico ico-arrow-left2"></span></button>
+	</div>
+	
+	<form class="must-process" onsubmit="return false">
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Featured profile</label></div>
+			<div class="span8"><input type="checkbox" name="featured" value="1" {FEATURED}></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>First name</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="fname" placeholder="First name" value="{FNAME}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Last name</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="lname" placeholder="Last name" value="{LNAME}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Age</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="age" placeholder="Age" value="{AGE}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Baby's name</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="baby_name" placeholder="Baby's name" value="{BABY_NAME}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Baby's expected date</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12 dp" name="baby_date" value="{BABY_DATE}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Baby's gender</label></div>
+			<div class="span8"><select name="baby_gender">{BABY_GENDER}</select></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Short description</label></div>
+			<div class="span8"><textarea class="span12" name="desc_short" maxlength="128">{DESC_SHORT}</textarea></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Long description</label></div>
+			<div class="span8"><textarea class="span12" rows="8" name="desc_long">{DESC_LONG}</textarea></div>
+		</div>
+
+		<p class="save"><button class="btn btn-success btn-submit"><span class="ico ico-check"></span>Save</button></p>
+	</form>
+		
+	<div class="{SHOW_ON_EDIT}">
+		<h2>Image gallery</h2>
+		<div class="gallery">
+			<div id="file-uploader"></div>
+			<div class="images">{IMAGES}</div>
+		</div>
+
+		<h2>Funds</h2>
+		<div class="funds">
+			<p>Current amount: <strong>$ {RAISED} of $ {TARGET}</strong></p>
+
+			<div>
+				<p>Assign from Universal Fund ($ {UF})</p>
+				<div class="input-prepend input-append">
+					<span class="add-on">$</span>
+					<input type="number" name="amount" placeholder="100" />
+					<button class="btn btn-assign btn-info"><span class="ico ico-check"></span>Save</button>
+				</div>
+			</div>
+
+			<div class="table-holder">
+				<table>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Type</th>
+							<th>Amount</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- BEGIN DYNAMIC BLOCK: fund -->
+						<tr>
+							<td>{DATE}</td>
+							<td>{TYPE}</td>
+							<td>$ {AMOUNT}</td>
+							<td>{ACTION}</td>
+						</tr>
+						<!-- END DYNAMIC BLOCK: fund -->
+						{FUNDS_EMPTY}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+</div>

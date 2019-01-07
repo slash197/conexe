@@ -1,0 +1,21 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteRule ^admin/(.*)$ admin/$1 [NC,L,QSA]
+RewriteRule ^sign-out$ index.php?act=auth-signOut [NC,L,QSA]
+
+RewriteRule ^mom/(.*)/(.*)$ index.php?pag=mom&id=$1&name=$2 [NC,L,QSA]
+RewriteRule ^gift-card-success/(.*)$ index.php?pag=done&transaction_id=$1&status=success&type=gift [NC,L,QSA]
+RewriteRule ^gift-card-cancelled/(.*)$ index.php?pag=done&transaction_id=$1&status=cancelled&type=gift [NC,L,QSA]
+RewriteRule ^donation-success/(.*)$ index.php?pag=done&transaction_id=$1&status=success&type=donation [NC,L,QSA]
+RewriteRule ^donation-cancelled/(.*)$ index.php?pag=done&transaction_id=$1&status=cancelled&type=donation [NC,L,QSA]
+RewriteRule ^monthly-success$ index.php?pag=done&status=success&type=monthly [NC,L,QSA]
+RewriteRule ^monthly-cancelled$ index.php?pag=done&status=cancelled&type=monthly [NC,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?pag=cms&title=$1 [NC,L,QSA]
+
+ErrorDocument 404 index.php?pag=404

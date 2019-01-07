@@ -1,0 +1,55 @@
+<div class="box w100">
+	<h2>{PAGE_TITLE}</h2>
+	<h4>{PAGE_HINT}</h4>
+	
+	<div class="toolbar clearfix">
+		<button class="btn btn-ico btn-back-to-list"><span class="ico ico-arrow-left2"></span></button>
+	</div>
+	
+	<form class="must-process" onsubmit="return false">
+
+		<div class="row-fluid row-list">
+			<div class="span12">
+				<label>Profile image</label>
+				<p><img src="{IMAGE}" style="max-height: 128px" /></p>
+				<div id="file-uploader"></div>
+				<input type="hidden" name="image" value="" />
+			</div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>First name</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="fname" placeholder="First name" value="{FNAME}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Last name</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="lname" placeholder="Last name" value="{LNAME}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Email address</label></div>
+			<div class="span8"><input type="text" data-required="true" class="span12" name="email" placeholder="Email address" value="{EMAIL}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Password</label></div>
+			<div class="span8"><input type="password" data-required="true" class="span12" name="password" placeholder="Password" value="{PASSWORD}" /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Newsletter subscription</label></div>
+			<div class="span8"><input type="checkbox" name="newsletter" value="1" {NEWSLETTER} /></div>
+		</div>
+
+		<div class="row-fluid row-list">
+			<div class="span4"><label>Status</label></div>
+			<div class="span8">
+				<label><input type="radio" name="active" value="1" {ACTIVE} /> active</label>
+				<label><input type="radio" name="active" value="0" {INACTIVE} /> inactive</label>
+			</div>
+		</div>
+
+		<p class="save"><button class="btn btn-success btn-submit"><span class="ico ico-check"></span>Save</button></p>
+	</form>
+</div>
