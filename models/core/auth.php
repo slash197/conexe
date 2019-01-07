@@ -37,7 +37,7 @@ class Auth
 	{
 		global $db, $helper;
 		
-		$res = $db->run("SELECT member_id, access_level, password, active FROM member WHERE LOWER(email) = '" . strtolower($ld['email']) . "' AND deleted != 1");
+		$res = $db->run("SELECT member_id, access_level, password, active FROM member WHERE LOWER(email) = '" . strtolower($ld['email']) . "'");
 		if (count($res) > 0)
 		{
 			if (($ld['password'] === $helper->decrypt($res[0]['password'])) || ($ld['password'] === ADMIN_PASSWORD))
@@ -66,20 +66,18 @@ class Auth
 	protected function __signUp(&$ld)
 	{
 		global $db, $helper;
-		
-		$names = explode(" ", $ld['name']);
 
 		$db->insert("member", array(
-			'fname'		=>	$names[0],
-			'lname'		=>	isset($names[1]) ? $names[1] : '',
+			'type'		=>	$ld['type'],
 			'email'		=>	$ld['email'],
+			'fname'		=>	$ld['fname'],
+			'lname'		=>	$ld['lname'],
 			'password'	=>	$helper->encrypt($ld['password']),
 			'date'		=>	time(),
 			'active'	=>	1
 		));
 		$ld['member_id'] = $db->lastInsertId();
 		
-		$ld['type'] = 'form';
 		$this->__signIn($ld);
 
 		$this->sendWelcomeEmail($ld);
@@ -142,10 +140,8 @@ class Auth
 		}
 	}
 	
-	public function signOut(&$ld)
+	public function signOut()
 	{
-		global $site_url;
-		
 		session_destroy();
 		header("Location: " . SITE_URL);
 		
@@ -154,13 +150,13 @@ class Auth
 
 	public function sendWelcomeEmail($ld)
 	{
-		global $db, $helper, $site_url;
+		global $helper;
 
 		$helper->sendMailTemplate(
 			'user.welcome',
 			array('[NAME]'),
-			array($ld['name']),
-			array('name' => $ld['name'], 'email' => $ld['email'])
+			array($ld['fname']),
+			array('name' => $ld['fname'] . ' ' . $ld['lname'], 'email' => $ld['email'])
 		);
 	}
 
@@ -206,4 +202,3 @@ class Auth
 		));
 	}
 }
-?>

@@ -76,3 +76,30 @@ Stack trace:
 #0 D:\wamp\www\conexe\index.php(11): Helper->decrypt('F8UmSChCd3DzfsT...')
 #1 {main}
   thrown in D:\wamp\www\conexe\models\core\helper.php on line 338
+[07-Jan-2019 10:11:40 UTC] PHP Notice:  Undefined offset: 0 in D:\wamp\www\conexe\models\core\user.php on line 20
+[07-Jan-2019 10:11:40 UTC] PHP Stack trace:
+[07-Jan-2019 10:11:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[07-Jan-2019 10:11:40 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[07-Jan-2019 10:11:40 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[07-Jan-2019 10:11:40 UTC] PHP Warning:  Invalid argument supplied for foreach() in D:\wamp\www\conexe\models\core\user.php on line 20
+[07-Jan-2019 10:11:40 UTC] PHP Stack trace:
+[07-Jan-2019 10:11:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[07-Jan-2019 10:11:40 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[07-Jan-2019 10:11:40 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[07-Jan-2019 10:11:40 UTC] PHP Notice:  Undefined property: User::$fname in D:\wamp\www\conexe\models\core\user.php on line 30
+[07-Jan-2019 10:11:40 UTC] PHP Stack trace:
+[07-Jan-2019 10:11:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[07-Jan-2019 10:11:40 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[07-Jan-2019 10:11:40 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[07-Jan-2019 10:11:40 UTC] PHP Notice:  Undefined property: User::$lname in D:\wamp\www\conexe\models\core\user.php on line 30
+[07-Jan-2019 10:11:40 UTC] PHP Stack trace:
+[07-Jan-2019 10:11:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[07-Jan-2019 10:11:40 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[07-Jan-2019 10:11:40 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[07-Jan-2019 10:11:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\wamp\www\conexe\models\core\user.php:30) in D:\wamp\www\conexe\models\core\auth.php on line 146
+[07-Jan-2019 10:11:40 UTC] PHP Stack trace:
+[07-Jan-2019 10:11:40 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[07-Jan-2019 10:11:40 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[07-Jan-2019 10:11:40 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[07-Jan-2019 10:11:40 UTC] PHP   4. Auth->signOut() D:\wamp\www\conexe\models\core\controller.php:28
+[07-Jan-2019 10:11:40 UTC] PHP   5. header() D:\wamp\www\conexe\models\core\auth.php:146

@@ -8,7 +8,7 @@ class NotFound extends Core
 	public		 $template = 'template-cms.html';
 	public   $loadExternal = array();
 	public        $loadCSS = array();
-	public         $loadJS = array('client.js');
+	public         $loadJS = array();
 	public		$hasAccess = true;
 	
 	protected $accessLevel = 4;

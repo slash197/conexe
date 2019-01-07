@@ -23,6 +23,7 @@ $p = new Parser($page->template);
 $p->parseValue(array(
 	'CONTENT'			=>	$page->content,
 	'MAIN_MENU'			=>	$helper->buildMainMenu(0, true),
+	'MAIN_MENU_SIMPLE'	=>	$helper->buildMainMenu(0, false),
 	'RANDOM'			=>	rand(111, 999),
 	'META_TITLE'		=>	META_TITLE,
 	'META_KEYWORDS'		=>	META_KEYWORDS,

@@ -279,7 +279,7 @@ class Helper
 				<td>
 					<table style="font-family: Arial; font-size: 14px; background-color: #ffffff; color: #636363; border-bottom: 2px solid #d0d0d0" width="80%" align="center" cellpadding="20" cellspacing="0">
 						<tr>
-							<td align="center"><img src="' . SITE_URL . 'assets/img/logo.svg" style="max-height: 60px" /></td>
+							<td align="center"><img src="' . SITE_URL . 'assets/img/logo.dark.png" style="max-height: 60px" /></td>
 						</tr>
 						<tr>
 							<td>' . $content . '</td>
@@ -318,7 +318,7 @@ class Helper
 		
 		$mail->setOptions(array(
 			'to'		=>	$to,
-			'from'		=>	$from ? $from : array('name' => 'Kira Support', 'email' => 'support@kira.com'),
+			'from'		=>	$from ? $from : array('name' => 'Conexe Support', 'email' => 'support@conexe.com'),
 			'subject'	=>	$subject,
 			'body'		=>	($wrap) ? $this->mailWrap($body) : $body
 		));
@@ -584,7 +584,7 @@ class Helper
 
 	public function buildUserMenu()
 	{
-		global $user, $glob, $site_url;
+		global $user;
 
 		if ($user === null) return '';
 
@@ -592,11 +592,9 @@ class Helper
 			'<div class="user-menu">' .
 				'<a><img src="' . $user->image . '" class="profile h30" />' . $user->fname . '</a><span class="ico ico-keyboard-arrow-down"></span>' . 
 				'<div class="dd">' .
-					'<p class="name">' . $user->fname . '</p>' .
-					'<p class="location"></p>' .
-					'<div class="divider"></div>' .
 					'<ul>' .
 						'<li><a href="account">My account</a></li>' .
+						'<li class="divider"></li>' .
 						'<li><a href="sign-out">Sign out</a></li>' .
 					'</ul>' .
 				'</div>' .
@@ -738,4 +736,3 @@ class Helper
 		unset($user);
 	}
 }
-?>
