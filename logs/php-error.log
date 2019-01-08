@@ -255,3 +255,105 @@ Stack trace:
 [08-Jan-2019 10:10:25 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
 [08-Jan-2019 10:10:25 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
 [08-Jan-2019 10:10:25 UTC] PHP   4. General->getStates() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:04:31 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 128
+[08-Jan-2019 11:04:31 UTC] PHP Stack trace:
+[08-Jan-2019 11:04:31 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:04:31 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:04:31 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:04:31 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:04:31 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:04:31 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:04:31 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:109
+[08-Jan-2019 11:04:31 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 128
+[08-Jan-2019 11:04:31 UTC] PHP Stack trace:
+[08-Jan-2019 11:04:31 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:04:31 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:04:31 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:04:31 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:04:31 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:04:31 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:04:31 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:110
+[08-Jan-2019 11:04:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\wamp\www\conexe\models\core\uploader.php:128) in D:\wamp\www\conexe\models\core\general.php on line 27
+[08-Jan-2019 11:04:31 UTC] PHP Stack trace:
+[08-Jan-2019 11:04:31 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:04:31 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:04:31 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:04:31 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:04:31 UTC] PHP   5. header() D:\wamp\www\conexe\models\core\general.php:27
+[08-Jan-2019 11:44:00 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 128
+[08-Jan-2019 11:44:00 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:00 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:00 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:00 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:00 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:00 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:44:00 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:44:00 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:109
+[08-Jan-2019 11:44:00 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 128
+[08-Jan-2019 11:44:00 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:00 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:00 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:00 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:00 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:00 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:44:00 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:44:00 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:110
+[08-Jan-2019 11:44:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\wamp\www\conexe\models\core\uploader.php:128) in D:\wamp\www\conexe\models\core\general.php on line 27
+[08-Jan-2019 11:44:00 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:00 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:00 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:00 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:00 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:00 UTC] PHP   5. header() D:\wamp\www\conexe\models\core\general.php:27
+[08-Jan-2019 11:44:35 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 130
+[08-Jan-2019 11:44:35 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:35 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:35 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:35 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:35 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:35 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:44:35 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:44:35 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:109
+[08-Jan-2019 11:44:35 UTC] PHP Notice:  A non well formed numeric value encountered in D:\wamp\www\conexe\models\core\uploader.php on line 130
+[08-Jan-2019 11:44:35 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:35 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:35 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:35 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:35 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:35 UTC] PHP   5. Uploader->__construct() D:\wamp\www\conexe\models\core\general.php:24
+[08-Jan-2019 11:44:35 UTC] PHP   6. Uploader->checkServerSettings() D:\wamp\www\conexe\models\core\uploader.php:85
+[08-Jan-2019 11:44:35 UTC] PHP   7. Uploader->toBytes() D:\wamp\www\conexe\models\core\uploader.php:110
+[08-Jan-2019 11:44:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\wamp\www\conexe\models\core\uploader.php:130) in D:\wamp\www\conexe\models\core\general.php on line 27
+[08-Jan-2019 11:44:35 UTC] PHP Stack trace:
+[08-Jan-2019 11:44:35 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 11:44:35 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 11:44:35 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 11:44:35 UTC] PHP   4. General->upload() D:\wamp\www\conexe\models\core\controller.php:31
+[08-Jan-2019 11:44:35 UTC] PHP   5. header() D:\wamp\www\conexe\models\core\general.php:27
+[08-Jan-2019 11:47:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function parseInt() in D:\wamp\www\conexe\models\core\uploader.php:122
+Stack trace:
+#0 D:\wamp\www\conexe\models\core\uploader.php(109): Uploader->toBytes('256M')
+#1 D:\wamp\www\conexe\models\core\uploader.php(85): Uploader->checkServerSettings()
+#2 D:\wamp\www\conexe\models\core\general.php(24): Uploader->__construct(Array, 67108864)
+#3 D:\wamp\www\conexe\models\core\controller.php(31): General->upload(Array)
+#4 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#5 D:\wamp\www\conexe\callback.php(6): require('D:\\wamp\\www\\con...')
+#6 {main}
+  thrown in D:\wamp\www\conexe\models\core\uploader.php on line 122
+[08-Jan-2019 12:11:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method General::contact() in D:\wamp\www\conexe\models\core\controller.php:31
+Stack trace:
+#0 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#1 D:\wamp\www\conexe\index.php(6): require('D:\\wamp\\www\\con...')
+#2 {main}
+  thrown in D:\wamp\www\conexe\models\core\controller.php on line 31
+[08-Jan-2019 12:11:34 UTC] PHP Warning:  file_get_contents(views/): failed to open stream: No such file or directory in D:\wamp\www\conexe\models\core\parser.php on line 15
+[08-Jan-2019 12:11:34 UTC] PHP Stack trace:
+[08-Jan-2019 12:11:34 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 12:11:34 UTC] PHP   2. Parser->__construct() D:\wamp\www\conexe\index.php:21
+[08-Jan-2019 12:11:34 UTC] PHP   3. file_get_contents() D:\wamp\www\conexe\models\core\parser.php:15
+[08-Jan-2019 12:15:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method General::contact() in D:\wamp\www\conexe\models\core\controller.php:31
+Stack trace:
+#0 D:\wamp\www\conexe\startup.php(19): Controller->__construct()
+#1 D:\wamp\www\conexe\index.php(6): require('D:\\wamp\\www\\con...')
+#2 {main}
+  thrown in D:\wamp\www\conexe\models\core\controller.php on line 31

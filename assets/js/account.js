@@ -13,7 +13,6 @@ $(document).on('click', '.account .menu a[href="?act=account-delete"]', function
 });
 
 $(document).on('change', 'select[name="data[country]"]', function(){
-	lg('change');
 	request({
 		data: {
 			act: 'general-getStates',
@@ -23,6 +22,34 @@ $(document).on('change', 'select[name="data[country]"]', function(){
 			if (r.status) $('select[name="data[region]"]').html(r.states);
 		}
 	});
+});
+
+$(document).on('click', '.ico-photo-camera', function(){
+	$('#file-uploader input[type="file"]').click();
+});
+
+var uploader = new qq.FileUploader({
+	element: document.getElementById('file-uploader'),
+	multiple: false,
+	action: 'callback.php?act=general-upload',
+	debug: true,
+	uploadButtonText: 'Upload',
+	disableDefaultDropzone: true,
+	onComplete: function(id, filename, response){
+		if (response.success === true)
+		{
+			$('input[name="image"]').val(response.path);
+			request({
+				data: {
+					act: 'account-saveProfileImage',
+					image: response.path
+				},
+				success: function(r){
+					if (r.status) $('img.profile').attr('src', r.url);
+				}
+			});
+		}
+	}
 });
 
 $(".account form").validate({

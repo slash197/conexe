@@ -131,7 +131,7 @@ class Helper
 		
 		$mail->setOptions(array(
 			'to'		=>	$to,
-			'from'		=>	$from ? $from : array('name' => 'Conexe Support', 'email' => 'support@conexe.com'),
+			'from'		=>	$from ? $from : array('name' => 'Conexe Support', 'email' => 'support@conexe.ro'),
 			'subject'	=>	$subject,
 			'body'		=>	($wrap) ? $this->mailWrap($body) : $body
 		));

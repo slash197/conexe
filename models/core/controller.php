@@ -110,7 +110,4 @@ class Controller extends Core
 		
 		return $out;
 	}
-	
-	
 }
-?>

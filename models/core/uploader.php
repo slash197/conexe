@@ -119,7 +119,7 @@ class Uploader {
 
     protected function toBytes($str)
 	{
-        $val = trim($str);
+        $val = (int)$str;
         $last = strtolower($str[strlen($str)-1]);
         
 		switch($last)

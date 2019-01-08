@@ -3,6 +3,10 @@
 		<div class="row-fluid">
 			<div class="span3 box">
 				<img src="{IMAGE}" class="profile rect wfull no-border" />
+				
+				<div id="file-uploader"></div>
+				<span class="ico ico-photo-camera"></span>
+				
 				<ul>
 					<li><a href="account"><span class="ico ico-account-box"></span>My account</a></li>
 					<li><a href="sign-out"><span class="ico ico-exit-to-app"></span>Sign out</a></li>
@@ -14,6 +18,7 @@
 				
 				<form action="" method="post">
 					<input type="hidden" name="act" value="account-update" />
+					<input type="hidden" name="image" value="" />
 					
 					<p><input type="text" name="data[fname]" placeholder="First name" value="{FNAME}" /></p>
 					<p><input type="text" name="data[lname]" placeholder="Last name" value="{LNAME}" /></p>

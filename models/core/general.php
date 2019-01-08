@@ -37,18 +37,6 @@ class General extends Core
 		));
 	}
 	
-	public function contact(&$ld)
-	{
-		$this->helper->p($ld, 1);
-		
-		$body = 'Name: ' . $ld['name'] . '<br />Email: ' . $ld['email'] . '<br />---<br />Message: ' . $ld['message'];
-
-		$ld['mail-result'] = $this->helper->sendMail($body, 'New Contact from your website Kira', array('name' => 'Admin', 'email' => ADMIN_EMAIL));
-
-		$ld['error'] = $this->helper->buildMessageBox("success", "Your message has been sent. We will get back to you as soon as possible.");
-		return true;
-	}
-	
 	public function fetch()
 	{
 		

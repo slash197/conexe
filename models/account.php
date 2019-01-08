@@ -8,7 +8,7 @@ class Account extends Core
 	public		 $template = 'template-full.html';
 	public   $loadExternal = array();
 	public        $loadCSS = array();
-	public         $loadJS = array('account.js');
+	public         $loadJS = array('fileuploader.js', 'account.js');
 	public		$hasAccess = false;
 	protected $accessLevel = 3;
 	
@@ -26,16 +26,28 @@ class Account extends Core
 		$this->db->update("member", $ld['data'], "member_id = {$this->user->id}");	
 		$ld['error'] = $this->helper->buildMessageBox("success", "Account details saved", false);
 		
-		if (isset($_FILES['image']) && ($_FILES['image']['tmp_name'] !== ''))
+		$this->user = new User($this->user->id);		
+		return true;
+	}
+	
+	public function saveProfileImage(&$ld)
+	{
+		if (isset($ld['image']))
 		{
-			$image = new Resize($_FILES['image']['tmp_name']);
+			$image = new Resize($ld['image']);
 			
 			$image->resizeImage(300, 300, 'crop');
 			$image->saveImage("uploads/profile/{$this->user->id}.jpg", 100);
+			
+			@unlink($ld['image']);
 		}
 		
-		$this->user = new User($this->user->id);		
-		return true;
+		$this->user = new User($this->user->id);
+		
+		$this->helper->respond(array(
+			'status'	=>	true,
+			'url'		=>	"uploads/profile/{$this->user->id}.jpg?v=" . rand(111, 999)
+		));
 	}
 	
 	public function delete()

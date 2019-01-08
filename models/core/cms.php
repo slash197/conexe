@@ -30,12 +30,7 @@ class CMS extends Core
 
 	protected function parseDynamicBlocks($str)
 	{
-		return
-			str_replace(
-				array('[CONTACT_FORM]'),
-				array($this->contact_form()),
-				$str
-			);
+		return $str;
 	}
 	
 	protected function contact_form()
