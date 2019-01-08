@@ -16,8 +16,6 @@ class members
 	
 	public function export(&$glob)
 	{
-		global $helper;
-		
 		$res = $this->db->run(base64_decode($glob['q']));
 
 		$fp = fopen('user.export.csv', 'w');
@@ -48,7 +46,6 @@ class members
 		
 		parse_str($glob['data'], $glob['data']);
 		$glob['data']['password'] = $helper->encrypt($glob['data']['password']);
-		if (!isset($glob['data']['newsletter'])) $glob['data']['newsletter'] = 0;
 		
 		if ($glob['id'] !== '')
 		{
@@ -77,7 +74,7 @@ class members
 	
 	public function getItem(&$glob)
 	{
-		global $site_url, $helper;
+		global $helper;
 		
 		$p = new Parser(get_class($this) . ".item.html");
 
@@ -94,9 +91,10 @@ class members
 				'EMAIL'				=>  htmlentities($item['email']),
 				'IMAGE'				=>  file_exists("../uploads/profile/{$glob['id']}.jpg") ? "../uploads/profile/{$glob['id']}.jpg?v=" . rand(111, 999) : "../assets/img/profile.na.png",
 				'PASSWORD'			=>  $helper->decrypt($item['password']),
-				'NEWSLETTER'		=>  ($item['newsletter'] === '0') ? '' : 'checked="checked"',
 				'ACTIVE'			=>  ($item['active'] === '0') ? '' : 'checked="checked"',
 				'INACTIVE'			=>  ($item['active'] === '1') ? '' : 'checked="checked"',
+				'CUSTOMER'			=>  ($item['type'] !== 'customer') ? '' : 'checked="checked"',
+				'VENDOR'			=>  ($item['type'] !== 'vendor') ? '' : 'checked="checked"',
 				'EDIT_S'			=>	'',
 				'EDIT_E'			=>	''
 			));
@@ -111,9 +109,10 @@ class members
 				'EMAIL'				=>  $helper->prefill('email'),
 				'IMAGE'				=>  "../assets/img/profile.na.png",
 				'PASSWORD'			=>  $helper->prefill('password'),
-				'NEWSLETTER'		=>	'checked="checked"',
 				'ACTIVE'			=>  'checked="checked"',
 				'INACTIVE'			=>  '',
+				'CUSTOMER'			=>  'checked="checked"',
+				'VENDOR'			=>  '',
 				'EDIT_S'			=>	'<!--',
 				'EDIT_E'			=>	'-->',
 				'URL_FT'			=>	'',
@@ -129,7 +128,7 @@ class members
 	
 	public function getList(&$glob)
 	{
-		global $site_url, $helper;
+		global $helper;
 		
 		$p = new Parser(get_class($this) . ".list.html");
 		$p->defineBlock('item');
@@ -150,17 +149,11 @@ class members
 		{			
 			$r = $res[$index];
 			
-			$donation = $this->db->run("SELECT SUM(amount) AS total FROM transaction WHERE member_id = {$r['member_id']} AND type IN ('payment', 'universal fund') AND status = 'success'");
-			$supported = $this->db->run("SELECT COUNT(mom_id) AS total FROM transaction WHERE member_id = {$r['member_id']} AND mom_id != 0 AND status = 'success' GROUP BY mom_id");
-			
 			$p->parseBlock(array(
 				'ID'			=>	$r['member_id'],
 				'NAME'			=>	$r['name'],
 				'EMAIL'			=>	$r['email'],
-				'REGISTRATION'	=>	date("d-m-Y H:i", $r['date']),
-				'DONATION'		=>	number_format($donation[0]['total'], 2),
-				'SUPPORTED'		=>	(count($supported) > 0) ? $supported[0]['total'] : 0,
-				'AVERAGE'		=>	(count($supported) > 0) ? number_format($donation[0]['total'] / $supported[0]['total'], 2) : 0
+				'REGISTRATION'	=>	date("d-m-Y H:i", $r['date'])
 			), 'item');
 			$index++;
 		}
@@ -198,4 +191,3 @@ class members
 		$helper->respond(array('error' => 0, 'message' => 'Selected items deleted successfully'));
 	}
 }
-?>

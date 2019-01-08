@@ -18,6 +18,14 @@
 		</div>
 
 		<div class="row-fluid row-list">
+			<div class="span4"><label>Type</label></div>
+			<div class="span8">
+				<label><input type="radio" name="type" value="customer" {CUSTOMER} /> customer</label>
+				<label><input type="radio" name="type" value="vendor" {VENDOR} /> vendor</label>
+			</div>
+		</div>
+
+		<div class="row-fluid row-list">
 			<div class="span4"><label>First name</label></div>
 			<div class="span8"><input type="text" data-required="true" class="span12" name="fname" placeholder="First name" value="{FNAME}" /></div>
 		</div>
@@ -35,11 +43,6 @@
 		<div class="row-fluid row-list">
 			<div class="span4"><label>Password</label></div>
 			<div class="span8"><input type="password" data-required="true" class="span12" name="password" placeholder="Password" value="{PASSWORD}" /></div>
-		</div>
-
-		<div class="row-fluid row-list">
-			<div class="span4"><label>Newsletter subscription</label></div>
-			<div class="span8"><input type="checkbox" name="newsletter" value="1" {NEWSLETTER} /></div>
 		</div>
 
 		<div class="row-fluid row-list">

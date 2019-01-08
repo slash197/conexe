@@ -21,9 +21,6 @@
 					<th><span class="ico ico-unfold-more" data-sort="name" data-order="{ORDER}"></span>Name</th>
 					<th><span class="ico ico-unfold-more" data-sort="email" data-order="{ORDER}"></span>Email</th>
 					<th><span class="ico ico-unfold-more" data-sort="date" data-order="{ORDER}"></span>Registration</th>
-					<th>Total donation</th>
-					<th># of moms supported</th>
-					<th>Average ticket</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,23 +31,18 @@
 					<td><a href="#" data-toggle="item" data-id="{ID}">{NAME}</a></td>
 					<td>{EMAIL}</td>
 					<td>{REGISTRATION}</td>
-					<th>$ {DONATION}</th>
-					<th>{SUPPORTED}</th>
-					<th>$ {AVERAGE}</th>
 				</tr>
 				<!-- END DYNAMIC BLOCK: item -->
 				{EMPTY}
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="8">{PAGINATION}</td>
+					<td colspan="5">{PAGINATION}</td>
 				</tr>
 			</tfoot>
 		</table>
 	</div>
 	<div class="text-right" style="padding: 20px">
 		<a href="callback.php?act=members-export&q={EXPORT_QUERY}" target="_blank"><span class="ico ico-download"></span> Export all</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="callback.php?act=members-export&q={EXPORT_QUERY_NEWSLETTER}" target="_blank"><span class="ico ico-download"></span> Export newsletter subscriptions</a>
 	</div>
 </div>
