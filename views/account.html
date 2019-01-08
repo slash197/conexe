@@ -1,20 +1,29 @@
 <div class="account">
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span2">
-				<img src="{IMAGE}" class="profile h100" />
+			<div class="span3 box">
+				<img src="{IMAGE}" class="profile rect wfull no-border" />
+				<ul>
+					<li><a href="account"><span class="ico ico-account-box"></span>My account</a></li>
+					<li><a href="sign-out"><span class="ico ico-exit-to-app"></span>Sign out</a></li>
+				</ul>
 			</div>
-			<div class="span3 menu">
+			<div class="span9 box">
 				<h2>Account settings</h2>
+				{ALERT}
 				
-				<form action="" method="post" enctype="multipart/form-data">
-					{ALERT}
+				<form action="" method="post">
 					<input type="hidden" name="act" value="account-update" />
 					
+					<p><input type="text" name="data[fname]" placeholder="First name" value="{FNAME}" /></p>
+					<p><input type="text" name="data[lname]" placeholder="Last name" value="{LNAME}" /></p>
 					<p><input type="text" name="data[email]" placeholder="Email address" value="{EMAIL}" /></p>
 					<p><input type="password" name="data[password]" placeholder="Password" value="{PASSWORD}" /></p>
-					<p style="margin: 40px 0px">Upload profile picture<br /><input type="file" name="image" /></p>
-					<p><button class="btn btn-info">Save changes</button></p>
+					<p><input type="text" name="data[phone]" placeholder="Phone number" value="{PHONE}" /></p>
+					<p><select name="data[country]">{COUNTRY}</select></p>
+					<p><select name="data[region]">{STATE}</select></p>
+					<p><input type="text" name="data[city]" placeholder="City" value="{CITY}" /></p>
+					<p><button class="btn btn-info">Save</button></p>
 				</form>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 @import 'datepicker';
 @import 'fileuploader';
 @import 'mobile';
+@import 'account';
 
 $primary: #01a3d9;
 $secondary: #b8d8db;
@@ -407,67 +408,6 @@ html {
 	}
 }
 
-.account {
-	padding: 60px;
-}
-	.account h1 {
-		font-size: 34px;
-		font-weight: 700;
-		text-transform: uppercase;
-		border-bottom: 2px solid #5cc6d9;
-		padding-bottom: 20px;
-		margin: 0px 0px 30px 0px;
-	}
-		.account h1 span {
-			display: block;
-			font-weight: 400;
-			text-transform: lowercase;
-		}
-	.account h2 {
-		font-size: 20px;
-		font-weight: 600;
-		border-bottom: 2px solid #5cc6d9;
-		padding-bottom: 20px;
-		margin: 54px 0px 20px 0px;
-	}
-	.account h3 {
-		font-size: 34px;
-		font-weight: 600;
-		text-align: left;
-	}
-	.account form {
-		padding: 40px 0px;
-	}
-		.account p {
-			margin: 10px 0px;
-			font-size: 18px;
-			line-height: 20px;
-		}
-			.account p a {
-				font-weight: 600;
-				display: inline-block;
-				padding-bottom: 3px;
-				border-bottom: 1px solid #3a51a2;
-			}
-			.account p a:hover {
-				text-decoration: none;
-				border-bottom: 1px solid #ee3923;
-			}
-			.account input[type="text"], .account input[type="password"] {
-				padding: 10px 15px;
-			}
-			
-	.account .menu p {
-		margin: 0px 0px 20px 0px;
-	}
-		.account .menu p a {
-			border-bottom: none;
-			font-weight: 400;
-		}
-		.account .menu p a.selected {
-			border-bottom: 1px solid #3a51a2;
-		}
-
 .dropdown-menu {
 	border-radius: 1px;
 	
@@ -526,6 +466,8 @@ img.profile.rect {
 	img.profile.h70 { height: 70px; }
 	img.profile.h150 { height: 100px; }
 	img.profile.h200 { height: 200px; }
+	img.profile.wfull { width: 100%; }
+	img.profile.no-border { border: none; }
 
 .spinner-holder {
 	padding: 100px 0px;
@@ -951,7 +893,6 @@ textarea.error {
 	font-size: 1em;
 	font-weight: 500;
 	color: #3a51a2;
-	text-transform: uppercase;
 	
 	.ico {
 		vertical-align: baseline;

@@ -18,35 +18,6 @@ class General extends Core
 
 		$this->hasAccess = $this->canAccess($this->accessLevel);
 	}
-		
-	public function getFeatured()
-	{
-		$moms = $this->db->run("SELECT * FROM mom WHERE featured = 1 ORDER BY RAND() LIMIT 3");
-		
-		foreach ($moms as $key => $r)
-		{
-			$res = $this->db->run("SELECT filename FROM mom_image WHERE profile = 1 AND mom_id = {$r['mom_id']}");
-			$profile = (count($res) > 0) ? "uploads/mom/{$res[0]['filename']}" : 'assets/img/mom.na.jpg';
-			
-			$raised = $this->helper->getFunds($r['mom_id']);
-			$remaining = FUND_TARGET - $raised;
-			
-			if ($raised > FUND_TARGET) $raised = FUND_TARGET;
-			if ($remaining < 0) $remaining = 0;
-			
-			$moms[$key]['date'] = date('F d, Y', $r['baby_date']);
-			$moms[$key]['raised'] = $raised;
-			$moms[$key]['remaining'] = $remaining;
-			$moms[$key]['percent'] = round($raised * 100 / FUND_TARGET, 0);
-			$moms[$key]['profile'] = $profile;
-		}
-		
-		$this->helper->respond(array(
-			'error'		=>	0,
-			'message'	=>	'success',
-			'moms'		=>	$moms
-		));
-	}
 	
 	public function upload($ld)
 	{
@@ -56,6 +27,14 @@ class General extends Core
 		header("Content-type: application/json; charset=utf-8");
 		echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		die();
+	}
+	
+	public function getStates($ld)
+	{
+		$this->helper->respond(array(
+			'status'	=>	true,
+			'states'	=>	$this->helper->buildStateDD(0, $ld['country_id'])
+		));
 	}
 	
 	public function contact(&$ld)

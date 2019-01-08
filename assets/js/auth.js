@@ -13,6 +13,12 @@ var client = {
 	},
 
 	initSignUp: function(type){
+		if (global.user !== null)
+		{
+			window.location.href = 'account';
+			return false;
+		}
+		
 		$('.access.signin, .access.forgot, #notify-modal').modal('hide');
 		$('.access.signup').modal('show');
 		
@@ -26,7 +32,6 @@ var client = {
 		request({
 			data: {
 				act: 'auth-signIn',
-				type: type,
 				email: email,
 				password: password
 			},

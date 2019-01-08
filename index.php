@@ -40,11 +40,11 @@ $p->parseValue(array(
 								'siteURL'	=>	SITE_URL,
 								'isHome'	=>	(isset($glob['title']) && ($glob['title'] == "home")) ? 1 : 0,
 								'glob'		=>	$glob,
-								'user'		=>	$user
+								'user'		=>	$user,
+								'assets'	=>	$page->assets
 							)),
 	'USER_IMAGE'		=>	($user !== null) ? $user->image : '',
 	'USER_NAME'			=>	($user !== null) ? $user->name : '',
-	'PAGE_SCRIPT'		=>	$page->assets,
 	'DEBUG'				=>	(DEBUG === 1) ? $helper->debug() : '',
 	'CYEAR'				=>	date('Y', time())
 ));

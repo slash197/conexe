@@ -62,6 +62,37 @@ loadScript('assets/js/jquery.min.js', function(){
 		loadScript('assets/js/bootstrap.min.js', function(){
 			loadScript('assets/js/app.js');
 			loadScript('assets/js/auth.js');
+			
+			for (var i = 0; i < global.assets.js.length; i++)
+			{
+				loadScript(global.assets.js[i]);
+			}
+			
+			for (var i = 0; i < global.assets.css.length; i++)
+			{
+				loadStyle(global.assets.css[i]);
+			}
+			
+			loadStyle('assets/css/cookieconsent.min.css');
+			loadScript('assets/js/cookieconsent.js', function(){
+				window.cookieconsent.initialise({
+				  "palette": {
+					"popup": {
+					  "background": "#eaf7f7",
+					  "text": "#5c7291"
+					},
+					"button": {
+					  "background": "#56cbdb",
+					  "text": "#ffffff"
+					}
+				  },
+				  "theme": "edgeless",
+				  "type": "opt-out",
+				  "content": {
+					"href": "privacy-policy"
+				  }
+				});
+			});
 		});
 	});
 });

@@ -103,3 +103,155 @@ Stack trace:
 [07-Jan-2019 10:11:40 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
 [07-Jan-2019 10:11:40 UTC] PHP   4. Auth->signOut() D:\wamp\www\conexe\models\core\controller.php:28
 [07-Jan-2019 10:11:40 UTC] PHP   5. header() D:\wamp\www\conexe\models\core\auth.php:146
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Undefined property: User::$region in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:45:58 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:45:58 UTC] PHP Stack trace:
+[08-Jan-2019 09:45:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:45:58 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:45:58 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:51:17 UTC] PHP Notice:  Trying to get property 'country' of non-object in D:\wamp\www\conexe\models\core\user.php on line 41
+[08-Jan-2019 09:51:17 UTC] PHP Stack trace:
+[08-Jan-2019 09:51:17 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:51:17 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[08-Jan-2019 09:51:17 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[08-Jan-2019 09:51:17 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\core\user.php on line 41
+[08-Jan-2019 09:51:17 UTC] PHP Stack trace:
+[08-Jan-2019 09:51:18 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:51:18 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[08-Jan-2019 09:51:18 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[08-Jan-2019 09:52:38 UTC] PHP Warning:  Attempt to modify property 'country' of non-object in D:\wamp\www\conexe\models\core\user.php on line 44
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[08-Jan-2019 09:52:38 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[08-Jan-2019 09:52:38 UTC] PHP Warning:  Attempt to modify property 'region' of non-object in D:\wamp\www\conexe\models\core\user.php on line 45
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[08-Jan-2019 09:52:38 UTC] PHP   3. User->__construct() D:\wamp\www\conexe\startup.php:18
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Undefined property: User::$region in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:52:38 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:52:38 UTC] PHP Stack trace:
+[08-Jan-2019 09:52:38 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:52:38 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:52:38 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Undefined property: User::$region in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:05 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:05 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:05 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:05 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:05 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 62
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Undefined property: User::$region in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Undefined property: User::$country in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:53:06 UTC] PHP Notice:  Trying to get property 'id' of non-object in D:\wamp\www\conexe\models\account.php on line 63
+[08-Jan-2019 09:53:06 UTC] PHP Stack trace:
+[08-Jan-2019 09:53:06 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:53:06 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:53:06 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:56:32 UTC] PHP Notice:  Undefined variable: countrId in D:\wamp\www\conexe\models\core\helper.php on line 329
+[08-Jan-2019 09:56:32 UTC] PHP Stack trace:
+[08-Jan-2019 09:56:32 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[08-Jan-2019 09:56:32 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[08-Jan-2019 09:56:32 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[08-Jan-2019 09:56:32 UTC] PHP   4. Helper->buildStateDD() D:\wamp\www\conexe\models\account.php:64
+[08-Jan-2019 10:10:25 UTC] PHP Notice:  Undefined index: country-id in D:\wamp\www\conexe\models\core\general.php on line 36
+[08-Jan-2019 10:10:25 UTC] PHP Stack trace:
+[08-Jan-2019 10:10:25 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[08-Jan-2019 10:10:25 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[08-Jan-2019 10:10:25 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[08-Jan-2019 10:10:25 UTC] PHP   4. General->getStates() D:\wamp\www\conexe\models\core\controller.php:31

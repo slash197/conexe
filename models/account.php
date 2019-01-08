@@ -24,7 +24,7 @@ class Account extends Core
 		$ld['data']['password'] = $this->helper->encrypt($ld['data']['password']);
 		
 		$this->db->update("member", $ld['data'], "member_id = {$this->user->id}");	
-		$ld['error'] = $this->helper->buildMessageBox("success", "Account details saved");
+		$ld['error'] = $this->helper->buildMessageBox("success", "Account details saved", false);
 		
 		if (isset($_FILES['image']) && ($_FILES['image']['tmp_name'] !== ''))
 		{
@@ -38,7 +38,7 @@ class Account extends Core
 		return true;
 	}
 	
-	public function delete(&$glob)
+	public function delete()
 	{
 		$this->db->update("member", array('deleted' => 1), "member_id = {$this->user->id}");
 		
@@ -48,14 +48,21 @@ class Account extends Core
 	
 	public function fetch()
 	{
+		global $helper;
+		
 		$p = new Parser("account.html");
 		
 		$p->parseValue(array(
 			'ALERT'		=>	$this->helper->prefill('error'),
-			'NAME'		=>	$this->user->fname,
+			'FNAME'		=>	$this->user->fname,
+			'LNAME'		=>	$this->user->lname,
 			'EMAIL'		=>	$this->user->email,
 			'PASSWORD'	=>	$this->user->password,
-			'IMAGE'		=>	$this->user->image
+			'IMAGE'		=>	$this->user->image,
+			'PHONE'		=>	$this->user->phone,
+			'COUNTRY'	=>	$helper->buildCountryDD($this->user->location['country']['id']),
+			'STATE'		=>	$helper->buildStateDD($this->user->location['region']['id'], $this->user->location['country']['id']),
+			'CITY'		=>	$this->user->city,
 		));
 
 		return $p->fetch();

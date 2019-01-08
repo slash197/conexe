@@ -7,7 +7,10 @@ class Controller extends Core
 {
 	public $template = '';
 	public $content = '';
-	public $assets = '';
+	public $assets = array(
+		'js'	=>	array(),
+		'css'	=>	array()
+	);
 	
 	protected $object;
 	protected $method;
@@ -79,26 +82,30 @@ class Controller extends Core
 	
 	protected function parseJS($scripts, $external)
 	{
+		global $config;
+		
 		foreach ($scripts as $script)
 		{
-			$url = (DEBUG) ? "assets/js/{$script}?v=" . rand(111, 999) : "assets/js/{$script}";
-			$this->assets .= '<script src="' . $url . '"></script>';
+			$scriptPath = (DEBUG) ? "assets/js/{$script}?v=" . rand(111, 999) : "assets/js/{$script}";
+			array_push($this->assets['js'], $config['site_url'] . $scriptPath);
 		}
 
 		foreach ($external as $script)
 		{
-			$this->assets .= '<script src="' . $script . '" defer></script>';
+			array_push($this->assets['js'], $script);
 		}
 	}
 	
 	protected function parseCSS($styleSheets)
 	{
+		global $config;
+		
 		$out = '';
 
 		foreach ($styleSheets as $ss)
 		{
-			$url = (DEBUG) ? "assets/css/{$ss}?v=" . rand(111, 999) : "assets/css/{$ss}";
-			$this->assets .= '<link rel="stylesheet" media="screen" href="' . $url . '" />';
+			$stylePath = (DEBUG) ? "assets/css/{$ss}?v=" . rand(111, 999) : "assets/css/{$ss}";
+			array_push($this->assets['css'], $config['site_url'] . $stylePath);
 		}
 		
 		return $out;

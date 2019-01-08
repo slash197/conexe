@@ -16,54 +16,6 @@ class Helper
 		$this->startUp();
 	}
 	
-	public function sendInvoice($transactionId)
-	{
-		$res = $this->db->run("SELECT t.*, m.fname, m.email FROM transaction t, member m WHERE t.transaction_id = {$transactionId} AND t.member_id = m.member_id");
-		$data = $res[0];
-		
-		$this->sendMailTemplate(
-			'payment.invoice',
-			array('[NAME]', '[INVOICE_DATA]'),
-			array($data['fname'], $this->generateInvoice($data)),
-			array('name' => $data['fname'], 'email' => $data['email'])
-		);
-	}
-	
-	public function generateInvoice($data)
-	{
-		$index = 1;
-		$items = '<tr><td>' . $index . '. </td><td>' . $this->getDescription($data['type']) . '</td><td align="right">$ ' . number_format($data['amount'], 2) . '</td></tr>';
-		
-		if ($data['tip'] !== '0.00')
-		{
-			$index++;
-			$items .= '<tr><td>' . $index . '. </td><td>Tip</td><td align="right">$ ' . number_format($data['tip'], 2) . '</td></tr>';
-		}
-		
-		if ($data['card_amount'] !== '0.00')
-		{
-			$index++;
-			$items .= '<tr><td>' . $index . '. </td><td>Gift card</td><td align="right">- $ ' . number_format($data['card_amount'], 2) . '</td></tr>';
-		}
-		
-		$total = '<tr style="background-color: #f0f0f0"><td></td><td align="right"><strong>Total</strong></td><td align="right"><strong>$ ' . number_format($data['amount'] + $data['tip'] - $data['card_amount'], 2) . '</strong></td></tr>';
-		
-		return
-			'<table style="width: 50%; font-size: 16px; color: #3a4fa2;">' .
-				'<thead>' .
-					'<th style="width: 10%; text-align: left;">Item ID</th>' .
-					'<th style="width: 60%; text-align: left;">Description</th>' .
-					'<th style="width: 30%; text-align: right;">Price</th>' .
-				'</thead>' .
-				'<tbody>' . 
-					'<tr><td colspan="3" height="20"></td></tr>' .
-					$items . 
-					$total .
-				'</tbody>' .
-			'</table>'
-		;
-	}
-	
 	public function getDescription($type)
 	{
 		switch ($type)
@@ -72,145 +24,6 @@ class Helper
 			case 'gift card': return 'Gift card';
 			case 'universal fund': return 'Universal fund donation';
 		}
-	}
-	
-	public function hasReachedTarget($momId)
-	{
-		$funds = $this->getFunds($momId);
-		
-		if ($funds >= FUND_TARGET)
-		{
-			$res = $this->db->run("SELECT fname FROM mom WHERE mom_id = {$momId}");
-			$mom = $res[0];
-			
-			// get all supporters
-			$res = $this->db->run("SELECT DISTINCT t.member_id, m.fname, m.email FROM member m, transaction t WHERE t.mom_id = {$momId} AND t.member_id = m.member_id");
-			foreach ($res as $r)
-			{
-				$this->sendMailTemplate(
-					'profile.fundingreached',
-					array('[NAME]', '[MOM]', '[URL]'),
-					array($r['fname'], $mom['fname'], SITE_URL . "{$momId}/{$mom['fname']}"),
-					array('name' => $r['fname'], 'email' => $r['email'])
-				);
-			}
-		}
-	}
-	
-	public function getCardBuyer($cardId)
-	{
-		$res = $this->db->run("SELECT m.* FROM card c, member m, transaction t WHERE c.card_id = {$cardId} AND c.transaction_id = t.transaction_id AND t.member_id = m.member_id");
-		
-		return (count($res) > 0) ? $res[0] : false;
-	}
-	
-	public function createWebhook()
-	{
-		if (!$this->checkWebhook())
-		{
-			$webhook = new \PayPal\Api\Webhook();
-
-			$webhook->setUrl(SITE_URL . "daemon.php");
-
-			$webhookEventTypes = array();
-			$webhookEventTypes[] = new \PayPal\Api\WebhookEventType('{"name":"PAYMENT.SALE.COMPLETED"}');
-			$webhook->setEventTypes($webhookEventTypes);
-
-			try
-			{
-				$webhook->create($this->createPayPalAPIContext());
-			}
-			catch (Exception $ex)
-			{
-				$this->p($ex, 1);
-				$glob['error'] = $this->helper->buildMessageBox('error', $ex->getMessage());
-				return false;
-			}
-		}
-	}
-	
-	public function checkWebhook()
-	{
-		try
-		{
-			$output = \PayPal\Api\Webhook::getAll($this->createPayPalAPIContext());
-			
-			return count($output->webhooks) > 0;
-		}
-		catch (Exception $ex)
-		{
-			$this->p($ex, 1);
-			$glob['error'] = $this->helper->buildMessageBox('error', $ex->getMessage());
-			return false;
-		} 
-	}
-	
-	public function validateCode($code)
-	{
-		$res = $this->db->run("SELECT * FROM card WHERE code = '{$code}' AND active = 1");
-		if (count($res) > 0)
-		{
-			$response = array(
-				'error'		=>	0,
-				'message'	=>	'Gift card code is valid',
-				'amount'	=>	(float) $res[0]['amount'],
-				'id'		=>	$res[0]['card_id']
-			);
-		}
-		else
-		{
-			$response = array(
-				'error'		=>	1,
-				'message'	=>	'Gift card code is not valid',
-				'amount'	=>	0,
-				'id'		=>	0
-			);
-		}
-		
-		return $response;
-	}
-	
-	public function createPayPalAPIContext()
-	{
-		$apiContext = new ApiContext(
-			new OAuthTokenCredential(PAYPAL_CLIENT_ID, PAYPAL_SECRET)
-		);
-
-		$apiContext->setConfig(
-			array(
-				'mode' => PAYPAL_MODE,
-				'log.LogEnabled' => false,
-				'log.FileName' => '../PayPal.log',
-				'log.LogLevel' => 'DEBUG', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
-				'cache.enabled' => false
-			)
-		);
-
-		return $apiContext;
-	}
-	
-	public function getFunds($id)
-	{
-		$res = $this->db->run("SELECT SUM(amount) AS funds FROM transaction WHERE mom_id = {$id} AND status = 'success'");
-		$funds = (float) $res[0]['funds'];
-		
-		if ($funds > FUND_TARGET) $funds = FUND_TARGET;
-		
-		return $funds;
-	}
-	
-	public function getFunders($id)
-	{
-		$res = $this->db->run("SELECT COUNT(DISTINCT member_id) AS total FROM transaction WHERE mom_id = {$id} AND status = 'success'");
-		return $res[0]['total'];
-	}
-	
-	public function getUniversalFunds()
-	{
-		$credit = $this->db->run("SELECT SUM(amount) AS credit FROM transaction WHERE type = 'universal fund' AND status = 'success'");
-		$debit = $this->db->run("SELECT SUM(amount) AS debit FROM transaction WHERE type = 'assigned' AND status = 'success'");
-		
-		return (float) $credit[0]['credit'] - (float) $debit[0]['debit'];
 	}
 	
 	public function genderDD($g)
@@ -340,7 +153,6 @@ class Helper
 	
 	public function respond($obj, $html = false)
 	{
-		//sleep(5);
 		if ($html === true)
 		{
 			header("Content-type: text/html; charset=utf-8;");
@@ -493,6 +305,38 @@ class Helper
 	protected function stripMultipleDashes($str)
 	{
 		return str_replace(array('------', '-----', '----', '---', '--'), '-', $str);
+	}
+	
+	public function buildCountryDD($id){
+		global $db;
+		
+		$out = '';
+		$res = $db->run("SELECT * FROM location_country ORDER BY name ASC");
+		
+		foreach ($res as $country)
+		{
+			$selected = ($id === $country['id']) ? 'selected="selected"' : '';
+			$out .= '<option value="' . $country['id'] . '" ' . $selected . '>' . $country['name'] . '</option>';
+		}
+		
+		return $out;
+	}
+	
+	public function buildStateDD($id, $countryId){
+		global $db;
+		
+		if ($countryId === 0) return '<option>select country</option>';
+		
+		$out = '';
+		$res = $db->run("SELECT id, name FROM location_region WHERE country_id = {$countryId} ORDER BY name ASC");
+		
+		foreach ($res as $region)
+		{
+			$selected = ($id === $region['id']) ? 'selected="selected"' : '';
+			$out .= '<option value="' . $region['id'] . '" ' . $selected . '>' . $region['name'] . '</option>';
+		}
+		
+		return $out;
 	}
 
 	public function buildPagination($num_rows, $row_per_page, $offset)

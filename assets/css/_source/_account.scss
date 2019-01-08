@@ -1,0 +1,52 @@
+.account {
+	padding: 60px;
+	
+	.box {
+		background-color: #ffffff;
+		border: 1px solid #cccdce;
+		box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.08);
+	}
+	.box.span9 {
+		padding: 40px;
+	}
+	
+	ul {
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		
+		li {
+			padding: 0px 20px;
+			a {
+				display: block;
+				line-height: 50px;
+				color: #a0a0a0;
+				border-bottom: 1px solid #e0e0e0;
+				
+				.ico {
+					margin-right: 10px;
+					color: #a0a0a0;
+					font-size: 1.5em;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+			a:hover {
+				color: #000000;
+			}
+		}
+		li:last-child {
+			a {
+				border-bottom: none;
+			}
+		}
+	}
+	
+	h2 {
+		margin-bottom: 30px;
+	}
+	
+	form {
+		margin: 0px;
+	}
+}
