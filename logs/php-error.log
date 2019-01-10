@@ -357,3 +357,8 @@ Stack trace:
 #1 D:\wamp\www\conexe\index.php(6): require('D:\\wamp\\www\\con...')
 #2 {main}
   thrown in D:\wamp\www\conexe\models\core\controller.php on line 31
+[10-Jan-2019 08:26:58 UTC] PHP Notice:  Undefined variable: bt in D:\wamp\www\conexe\models\core\database.php on line 33
+[10-Jan-2019 08:26:58 UTC] PHP Stack trace:
+[10-Jan-2019 08:26:58 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[10-Jan-2019 08:26:58 UTC] PHP   2. require() D:\wamp\www\conexe\index.php:6
+[10-Jan-2019 08:26:58 UTC] PHP   3. Database->__construct() D:\wamp\www\conexe\startup.php:16
