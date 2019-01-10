@@ -45,7 +45,7 @@ $p->parseValue(array(
 							)),
 	'USER_IMAGE'		=>	($user !== null) ? $user->image : '',
 	'USER_NAME'			=>	($user !== null) ? $user->name : '',
-	'DEBUG'				=>	(DEBUG === 1) ? $helper->debug() : '',
+	'DEBUG'				=>	DEBUG ? $helper->debug() : '',
 	'CYEAR'				=>	date('Y', time())
 ));
 echo $p->fetch();

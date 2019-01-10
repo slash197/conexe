@@ -4,8 +4,14 @@
 	.box {
 		background-color: #ffffff;
 		border: 1px solid #cccdce;
+		border-radius: 5px;
 		box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.08);
 		position: relative;
+		
+		img.profile.rect {
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
 	}
 	.box.span9 {
 		padding: 40px;
@@ -64,6 +70,6 @@
 	}
 	
 	form {
-		margin: 0px;
+		margin: 0px 0px 40px 0px;
 	}
 }

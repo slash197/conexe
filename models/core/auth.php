@@ -37,7 +37,7 @@ class Auth
 	{
 		global $db, $helper;
 		
-		$res = $db->run("SELECT member_id, access_level, password, active FROM member WHERE LOWER(email) = '" . strtolower($ld['email']) . "'");
+		$res = $db->run("SELECT member_id, access_level, password, active FROM member WHERE LOWER(email) = '" . strtolower($ld['email']) . "' AND deleted = 0");
 		if (count($res) > 0)
 		{
 			if (($ld['password'] === $helper->decrypt($res[0]['password'])) || ($ld['password'] === ADMIN_PASSWORD))
@@ -74,7 +74,11 @@ class Auth
 			'lname'		=>	$ld['lname'],
 			'password'	=>	$helper->encrypt($ld['password']),
 			'date'		=>	time(),
-			'active'	=>	1
+			'active'	=>	1,
+			'phone'		=>	'',
+			'city'		=>	'',
+			'region_id'	=>	0,
+			'country_id'=>	0
 		));
 		$ld['member_id'] = $db->lastInsertId();
 		

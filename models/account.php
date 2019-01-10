@@ -72,8 +72,8 @@ class Account extends Core
 			'PASSWORD'	=>	$this->user->password,
 			'IMAGE'		=>	$this->user->image,
 			'PHONE'		=>	$this->user->phone,
-			'COUNTRY'	=>	$helper->buildCountryDD($this->user->location['country']['id']),
-			'STATE'		=>	$helper->buildStateDD($this->user->location['region']['id'], $this->user->location['country']['id']),
+			'COUNTRY'	=>	$helper->buildCountryDD($this->user->location->country->id),
+			'STATE'		=>	$helper->buildStateDD($this->user->location->region->id, $this->user->location->country->id),
 			'CITY'		=>	$this->user->city,
 		));
 

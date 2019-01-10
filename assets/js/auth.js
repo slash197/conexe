@@ -43,7 +43,7 @@ var client = {
 					return false;
 				}
 
-				window.location.reload();
+				window.location.href = 'account';
 			}
 		});
 	},
@@ -82,7 +82,7 @@ var client = {
 								return false;
 							}
 
-							window.location.reload();
+							window.location.href = 'account';
 						}
 					});
 					return false;

@@ -93,6 +93,8 @@ class members
 				'PASSWORD'			=>  $helper->decrypt($item['password']),
 				'ACTIVE'			=>  ($item['active'] === '0') ? '' : 'checked="checked"',
 				'INACTIVE'			=>  ($item['active'] === '1') ? '' : 'checked="checked"',
+				'DELETED'			=>  ($item['deleted'] === '0') ? '' : 'checked="checked"',
+				'NOTDELETED'		=>  ($item['deleted'] === '1') ? '' : 'checked="checked"',
 				'CUSTOMER'			=>  ($item['type'] !== 'customer') ? '' : 'checked="checked"',
 				'VENDOR'			=>  ($item['type'] !== 'vendor') ? '' : 'checked="checked"',
 				'EDIT_S'			=>	'',
@@ -141,7 +143,7 @@ class members
 		$sort  = ($glob['param']['sort'] !== '') ? $glob['param']['sort'] : 'name';
 		$order = ($glob['param']['order'] !== '') ? $glob['param']['order'] : 'asc';
 		$index = $glob['param']['offset'];
-		$sql = "SELECT member_id, CONCAT(fname, ' ',  lname) AS name, email, date FROM member {$where} ORDER BY {$sort} {$order}";
+		$sql = "SELECT member_id, CONCAT(fname, ' ',  lname) AS name, email, date, active, deleted FROM member {$where} ORDER BY {$sort} {$order}";
 		
 		$res = $this->db->run($sql);
 		
@@ -153,7 +155,9 @@ class members
 				'ID'			=>	$r['member_id'],
 				'NAME'			=>	$r['name'],
 				'EMAIL'			=>	$r['email'],
-				'REGISTRATION'	=>	date("d-m-Y H:i", $r['date'])
+				'REGISTRATION'	=>	date("d-m-Y H:i", $r['date']),
+				'STATUS'		=>	($r['active'] === '1') ? '<span class="ico ico-check"></span>' : '<span class="ico ico-clear"></span>',
+				'DELETED'		=>	($r['deleted'] === '1') ? '<span class="ico ico-check"></span>' : '<span class="ico ico-clear"></span>'
 			), 'item');
 			$index++;
 		}

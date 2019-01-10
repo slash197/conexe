@@ -11,7 +11,7 @@ $config = array(
 	'site_url'			=>	"http://localhost/conexe/",
 
 	'site_name'			=>	"Conexe",
-	'debug'				=>	false,
+	'debug'				=>	true,
 	'live'				=>	true,
 
 	'meta_title'		=>	"Conexe",

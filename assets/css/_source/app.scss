@@ -3,8 +3,10 @@
 @import 'mobile';
 @import 'account';
 
-$primary: #01a3d9;
-$secondary: #b8d8db;
+$primary: #363636;
+$primaryHover: #242323;
+$secondary: #01a3d9;
+$secondaryHover: #0293c3;
 
 html {
 	padding: 0px;
@@ -215,10 +217,10 @@ html {
 		}
 		.stats {
 			.span4 {
+				color: $secondary;
 				text-align: center;
 				
 				.ico {
-					color: $primary;
 					font-size: 2em;
 				}
 				p {
@@ -901,15 +903,11 @@ textarea.error {
 	background-color: #f0f0f0;
 	color: #3a51a2;
 }
-.btn-success, .btn-success:focus { background-color: #63d56b; color: #ffffff; }
-.btn-success:hover { background-color: #4cc554; }
-.btn-success[disabled]:hover { background-color: #51a351; }
+.btn-success, .btn-success:focus { background-color: #secondary; color: #ffffff; }
+.btn-success:hover { background-color: $secondaryHover; }
 
 .btn-info {	background-color: $primary; color: #ffffff; }
-.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-group.open .btn-info.dropdown-toggle { background-color: #00b9dd; color: #ffffff; }
-
-.btn-green { background-color: #5cc6d9; }
-.btn-green:hover { background-color: #49b2c5; }
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-group.open .btn-info.dropdown-toggle { background-color: $primaryHover; color: #ffffff; }
 
 .btn-empty-white {
 	background-color: transparent;

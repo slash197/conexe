@@ -18,6 +18,8 @@
 				<tr>
 					<th><input type="checkbox" class="master"></th>
 					<th><span class="ico ico-unfold-more" data-sort="member_id" data-order="{ORDER}"></span>ID</th>
+					<th><span class="ico ico-unfold-more" data-sort="active" data-order="{ORDER}"></span>Active</th>
+					<th><span class="ico ico-unfold-more" data-sort="deleted" data-order="{ORDER}"></span>Removed</th>
 					<th><span class="ico ico-unfold-more" data-sort="name" data-order="{ORDER}"></span>Name</th>
 					<th><span class="ico ico-unfold-more" data-sort="email" data-order="{ORDER}"></span>Email</th>
 					<th><span class="ico ico-unfold-more" data-sort="date" data-order="{ORDER}"></span>Registration</th>
@@ -28,6 +30,8 @@
 				<tr>
 					<td><input type="checkbox" class="slave" data-id="{ID}"></td>
 					<td>{ID}</td>
+					<td>{STATUS}</td>
+					<td>{DELETED}</td>
 					<td><a href="#" data-toggle="item" data-id="{ID}">{NAME}</a></td>
 					<td>{EMAIL}</td>
 					<td>{REGISTRATION}</td>
@@ -37,7 +41,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5">{PAGINATION}</td>
+					<td colspan="7">{PAGINATION}</td>
 				</tr>
 			</tfoot>
 		</table>

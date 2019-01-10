@@ -3,23 +3,21 @@
  * ©SWD
  */
 
-$(document).on('click', '.account .menu a[href="?act=account-delete"]', function(e){
-	e.preventDefault();
-	
+$(document).on('click', '.account .btn-delete', function(e){
 	pp('Warning', 'Are you sure you want to delete your account?', [
 		{label: 'Delete', cls: ' btn-info', callback: function(){	window.location.href = '?act=account-delete'; } },
 		{label: 'Cancel', cls: '', callback: function(){} }
 	]);
 });
 
-$(document).on('change', 'select[name="data[country]"]', function(){
+$(document).on('change', 'select[name="data[country_id]"]', function(){
 	request({
 		data: {
 			act: 'general-getStates',
 			country_id: $(this).val()
 		},
 		success: function(r){
-			if (r.status) $('select[name="data[region]"]').html(r.states);
+			if (r.status) $('select[name="data[region_id]"]').html(r.states);
 		}
 	});
 });
