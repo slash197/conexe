@@ -78,7 +78,8 @@ class Auth
 			'phone'		=>	'',
 			'city'		=>	'',
 			'region_id'	=>	0,
-			'country_id'=>	0
+			'country_id'=>	0,
+			'address'	=>	''
 		));
 		$ld['member_id'] = $db->lastInsertId();
 		

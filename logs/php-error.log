@@ -458,3 +458,39 @@ Stack trace:
 #1 D:\wamp\www\conexe\index.php(19): Controller->run()
 #2 {main}
   thrown in D:\wamp\www\conexe\models\account.php on line 75
+[10-Jan-2019 10:33:03 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in D:\wamp\www\conexe\models\core\database.php on line 88
+[10-Jan-2019 10:33:03 UTC] PHP Stack trace:
+[10-Jan-2019 10:33:03 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[10-Jan-2019 10:33:03 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[10-Jan-2019 10:33:03 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[10-Jan-2019 10:33:03 UTC] PHP   4. General->getLocation() D:\wamp\www\conexe\models\core\controller.php:31
+[10-Jan-2019 10:33:03 UTC] PHP   5. Database->run() D:\wamp\www\conexe\models\core\general.php:34
+[10-Jan-2019 10:33:03 UTC] PHP   6. PDOStatement->fetchAll() D:\wamp\www\conexe\models\core\database.php:88
+[10-Jan-2019 10:36:18 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in D:\wamp\www\conexe\models\core\database.php on line 88
+[10-Jan-2019 10:36:18 UTC] PHP Stack trace:
+[10-Jan-2019 10:36:18 UTC] PHP   1. {main}() D:\wamp\www\conexe\callback.php:0
+[10-Jan-2019 10:36:18 UTC] PHP   2. require() D:\wamp\www\conexe\callback.php:6
+[10-Jan-2019 10:36:18 UTC] PHP   3. Controller->__construct() D:\wamp\www\conexe\startup.php:19
+[10-Jan-2019 10:36:18 UTC] PHP   4. General->getLocation() D:\wamp\www\conexe\models\core\controller.php:31
+[10-Jan-2019 10:36:18 UTC] PHP   5. Database->run() D:\wamp\www\conexe\models\core\general.php:34
+[10-Jan-2019 10:36:18 UTC] PHP   6. PDOStatement->fetchAll() D:\wamp\www\conexe\models\core\database.php:88
+[11-Jan-2019 08:51:41 UTC] PHP Notice:  Undefined variable: thi in D:\wamp\www\conexe\models\account.php on line 79
+[11-Jan-2019 08:51:41 UTC] PHP Stack trace:
+[11-Jan-2019 08:51:41 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[11-Jan-2019 08:51:41 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[11-Jan-2019 08:51:41 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[11-Jan-2019 08:51:41 UTC] PHP Notice:  Trying to get property 'user' of non-object in D:\wamp\www\conexe\models\account.php on line 79
+[11-Jan-2019 08:51:41 UTC] PHP Stack trace:
+[11-Jan-2019 08:51:41 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[11-Jan-2019 08:51:41 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[11-Jan-2019 08:51:41 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[11-Jan-2019 08:51:41 UTC] PHP Notice:  Trying to get property 'location' of non-object in D:\wamp\www\conexe\models\account.php on line 79
+[11-Jan-2019 08:51:41 UTC] PHP Stack trace:
+[11-Jan-2019 08:51:41 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[11-Jan-2019 08:51:41 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[11-Jan-2019 08:51:41 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71
+[11-Jan-2019 08:51:41 UTC] PHP Notice:  Trying to get property 'address' of non-object in D:\wamp\www\conexe\models\account.php on line 79
+[11-Jan-2019 08:51:41 UTC] PHP Stack trace:
+[11-Jan-2019 08:51:41 UTC] PHP   1. {main}() D:\wamp\www\conexe\index.php:0
+[11-Jan-2019 08:51:41 UTC] PHP   2. Controller->run() D:\wamp\www\conexe\index.php:19
+[11-Jan-2019 08:51:41 UTC] PHP   3. Account->fetch() D:\wamp\www\conexe\models\core\controller.php:71

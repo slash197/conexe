@@ -10,7 +10,6 @@ class NVP
 
 class Address
 {
-	public $city = null;
 	public $address = null;
 	public $latitude = null;
 	public $longitude = null;
@@ -26,6 +25,7 @@ class Location extends Address
 	{
 		$this->country = new NVP();
 		$this->region = new NVP();
+		$this->city = new NVP();
 	}
 }
 
@@ -71,6 +71,19 @@ class User extends Core
 					
 					break;
 				
+				case 'city_id':
+			
+					$res = $this->db->run("SELECT name FROM location_city WHERE id = {$value}");
+										
+					$this->location->city->id = $value;
+					$this->location->city->name = count($res) ? $res[0]['name'] : '';
+					
+					break;
+				
+				case 'address':
+					$this->location->address = $value;					
+					break;
+				
 				default:
 					$this->$key = $value;
 			}
@@ -78,5 +91,15 @@ class User extends Core
 
 		$this->name = trim($this->fname . " " . $this->lname);
 		$this->image = file_exists("uploads/profile/{$this->id}.jpg") ? SITE_URL . "uploads/profile/{$this->id}.jpg?v=" . rand(111, 999) : SITE_URL . "assets/img/profile.na.png";
+	}
+	
+	public function getLocation()
+	{
+		if ($this->location->city->id)
+		{
+			return $this->location->city->name . ', ' . $this->location->region->name . ', ' . $this->location->country->name;
+		}
+		
+		return '';
 	}
 }

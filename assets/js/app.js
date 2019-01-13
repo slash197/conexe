@@ -216,15 +216,13 @@ function pp(title, message, buttons)
 
 function request(o)
 {
-	$.ajax({
+	return $.ajax({
 		url: 'callback.php',
 		data: o.data,
 		type: 'post',
 		dataType: (typeof o.dataType === 'undefined') ? 'json' : o.dataType,
 		success: (typeof o.success === 'undefined') ? function(){} : o.success,
-		error: function(a, b, c){
-			lg(a); lg(b); lg(c);
-		}
+		error: function(){}
 	});
 }
 

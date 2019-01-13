@@ -19,7 +19,7 @@ class General extends Core
 		$this->hasAccess = $this->canAccess($this->accessLevel);
 	}
 	
-	public function upload($ld)
+	public function upload()
 	{
 		$uploader = new Uploader(array('jpg', 'jpeg'), 64 * 1024 * 1024);
 		$result = $uploader->handleUpload("uploads/temp/");
@@ -29,11 +29,33 @@ class General extends Core
 		die();
 	}
 	
-	public function getStates($ld)
+	public function getLocation($ld)
 	{
+		$ld['input'] = strtolower($ld['input']);
+		
+		$res = $this->db->run(
+			"SELECT
+				city.id,
+				city.name,
+				region.id AS region_id,
+				region.name AS region_name,
+				country.id AS country_id,
+				country.name AS country_name
+			FROM 
+				location_city AS city,
+				location_region AS region,
+				location_country AS country
+			WHERE 
+				MATCH(city.name) AGAINST('{$ld['input']}' IN BOOLEAN MODE) AND
+				city.name LIKE '{$ld['input']}%' AND
+				city.region_id = region.id AND
+				region.country_id = country.id
+			LIMIT 20"
+		);
+		
 		$this->helper->respond(array(
 			'status'	=>	true,
-			'states'	=>	$this->helper->buildStateDD(0, $ld['country_id'])
+			'results'	=>	$res
 		));
 	}
 	
@@ -42,4 +64,3 @@ class General extends Core
 		
 	}
 }
-?>

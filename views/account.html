@@ -19,15 +19,17 @@
 				<form action="" method="post">
 					<input type="hidden" name="act" value="account-update" />
 					<input type="hidden" name="image" value="" />
+					<input type="hidden" name="data[country_id]" value="{COUNTRY_ID}" />
+					<input type="hidden" name="data[region_id]" value="{REGION_ID}" />
+					<input type="hidden" name="data[city_id]" value="{CITY_ID}" />
 					
 					<p><input type="text" name="data[fname]" placeholder="First name" value="{FNAME}" /></p>
 					<p><input type="text" name="data[lname]" placeholder="Last name" value="{LNAME}" /></p>
 					<p><input type="text" name="data[email]" placeholder="Email address" value="{EMAIL}" /></p>
 					<p><input type="password" name="data[password]" placeholder="Password" value="{PASSWORD}" /></p>
 					<p><input type="text" name="data[phone]" placeholder="Phone number" value="{PHONE}" /></p>
-					<p><select name="data[country_id]">{COUNTRY}</select></p>
-					<p><select name="data[region_id]">{STATE}</select></p>
-					<p><input type="text" name="data[city]" placeholder="City" value="{CITY}" /></p>
+					<p class="location-dd"><input type="text" name="location" placeholder="Location" value="{LOCATION}" autocomplete="off" /></p>
+					{ADDRESS_S}<p><input type="text" name="data[address]" placeholder="Address" value="{ADDRESS}" /></p>{ADDRESS_E}
 					<p><button class="btn btn-info">Save</button></p>
 				</form>
 				<h2>Delete account</h2>

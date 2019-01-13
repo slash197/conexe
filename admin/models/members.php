@@ -98,7 +98,8 @@ class members
 				'CUSTOMER'			=>  ($item['type'] !== 'customer') ? '' : 'checked="checked"',
 				'VENDOR'			=>  ($item['type'] !== 'vendor') ? '' : 'checked="checked"',
 				'EDIT_S'			=>	'',
-				'EDIT_E'			=>	''
+				'EDIT_E'			=>	'',
+				'PHONE'				=>	$item['phone']
 			));
 		}
 		else
@@ -117,8 +118,7 @@ class members
 				'VENDOR'			=>  '',
 				'EDIT_S'			=>	'<!--',
 				'EDIT_E'			=>	'-->',
-				'URL_FT'			=>	'',
-				'URL_TL'			=>	'',
+				'PHONE'				=>	''
 			));
 		}
 		

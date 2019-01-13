@@ -12,6 +12,39 @@
 			border-top-left-radius: 5px;
 			border-top-right-radius: 5px;
 		}
+		
+		p.location-dd {
+			position: relative;
+			
+			ul {
+				list-style: none;
+				line-height: 30px;
+				margin: 0px;
+				padding: 0px;
+				position: absolute;
+				top: 30px;
+				background-color: #ffffff;
+				border: 1px solid #e0e0e0;
+				cursor: pointer;
+				min-width: 220px;
+				
+				li {
+					line-height: 30px;
+					padding: 0px 15px;
+					font-size: 0.9em;
+					
+					.city {
+						color: #313131;
+					}
+					.region {
+						color: #a0a0a0;
+					}
+				}
+				li:hover {
+					background-color: #f0f0f0;
+				}
+			}
+		}
 	}
 	.box.span9 {
 		padding: 40px;

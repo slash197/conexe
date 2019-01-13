@@ -60,8 +60,6 @@ class Account extends Core
 	
 	public function fetch()
 	{
-		global $helper;
-		
 		$p = new Parser("account.html");
 		
 		$p->parseValue(array(
@@ -72,9 +70,13 @@ class Account extends Core
 			'PASSWORD'	=>	$this->user->password,
 			'IMAGE'		=>	$this->user->image,
 			'PHONE'		=>	$this->user->phone,
-			'COUNTRY'	=>	$helper->buildCountryDD($this->user->location->country->id),
-			'STATE'		=>	$helper->buildStateDD($this->user->location->region->id, $this->user->location->country->id),
-			'CITY'		=>	$this->user->city,
+			'CITY_ID'	=>	$this->user->location->city->id,
+			'REGION_ID'	=>	$this->user->location->region->id,
+			'COUNTRY_ID'=>	$this->user->location->country->id,
+			'LOCATION'	=>	$this->user->getLocation(),
+			'ADDRESS_S'	=>	($this->user->type === 'customer') ? '<!--' : '',
+			'ADDRESS_E'	=>	($this->user->type === 'customer') ? '-->' : '',
+			'ADDRESS'	=>	($this->user->type === 'customer') ? '' : $this->user->location->address,
 		));
 
 		return $p->fetch();
