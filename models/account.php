@@ -24,7 +24,7 @@ class Account extends Core
 		$ld['data']['password'] = $this->helper->encrypt($ld['data']['password']);
 		
 		$this->db->update("member", $ld['data'], "member_id = {$this->user->id}");	
-		$ld['error'] = $this->helper->buildMessageBox("success", "Account details saved", false);
+		$ld['error'] = $this->helper->buildMessageBox("success", __('Account details saved'), false);
 		
 		$this->user = new User($this->user->id);		
 		return true;

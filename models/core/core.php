@@ -27,4 +27,3 @@ class Core
 		if ($_SESSION['access_level'] <= $this->accessLevel) return true;
 	}	
 }
-?>

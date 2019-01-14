@@ -5,9 +5,9 @@
 
 require 'startup.php';
 
-if (LIVE === 0)
+if (!LIVE)
 {
-	die('The site is currently under maintenance, please check back later');
+	die($_('The site is currently under maintenance, please check back later'));
 }
 
 $og = array(

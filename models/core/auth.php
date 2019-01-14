@@ -47,19 +47,19 @@ class Auth
 					$_SESSION['user_id'] = $res[0]['member_id'];
 					$_SESSION['access_level'] = $res[0]['access_level'];
 
-					$ld['error'] = 'Sign in was successful';
+					$ld['error'] = __('Sign in was successful');
 					return true;
 				}
 
-				$ld['error'] = 'This account has been suspended. Please contact support.';
+				$ld['error'] = __('This account has been suspended. Please contact support.');
 				return false;
 			}
 
-			$ld['error'] = 'Invalid password provided';
+			$ld['error'] = __('Invalid password provided');
 			return false;
 		}
 
-		$ld['error'] = 'This email address is not registered';
+		$ld['error'] = __('This email address is not registered');
 		return false;
 	}
 	
@@ -182,9 +182,10 @@ class Auth
 				array($m['name'], $password),
 				array('name' => $m['name'], 'email' => $m['email'])
 			);
-			$helper->respond(array('error' => 0, 'message' => 'A new password has been sent to you'));
+			$helper->respond(array('error' => 0, 'message' => __('A new password has been sent to you')));
 		}
-		$helper->respond(array('error' => 1, 'message' => 'This email address is not registered'));
+		
+		$helper->respond(array('error' => 1, 'message' => __('This email address is not registered')));
 	}
 	
 	public function backgroundCheck(&$ld)
@@ -197,7 +198,7 @@ class Auth
 		{
 			$helper->respond(array(
 				'status'	=>	false,
-				'message'	=>	'This email address is already registered'
+				'message'	=>	__('This email address is already registered')
 			));
 		}
 		

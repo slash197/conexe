@@ -44,4 +44,3 @@ class CMS extends Core
 		return $p->fetch();
 	}
 }
-?>

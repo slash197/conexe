@@ -19,6 +19,11 @@ class General extends Core
 		$this->hasAccess = $this->canAccess($this->accessLevel);
 	}
 	
+	public function switchLanguage(&$ld)
+	{
+		if (isset($ld['l'])) $_SESSION['language'] = $ld['l'];
+	}
+	
 	public function upload()
 	{
 		$uploader = new Uploader(array('jpg', 'jpeg'), 64 * 1024 * 1024);

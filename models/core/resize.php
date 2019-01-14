@@ -195,4 +195,3 @@ class Resize
 		if ($type == "png") imagepng($this->imageResized);
 	}
 }
-?>

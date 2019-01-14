@@ -25,7 +25,7 @@ class Contact extends Core
 
 		$ld['mail-result'] = $this->helper->sendMail($body, 'New contact from Conexe', array('name' => 'Admin', 'email' => ADMIN_EMAIL));
 
-		$ld['error'] = $this->helper->buildMessageBox("success", "Your message has been sent. We will get back to you as soon as possible.", false);
+		$ld['error'] = $this->helper->buildMessageBox("success", __('Your message has been sent. We will get back to you as soon as possible'), false);
 		return true;
 	}
 	
@@ -40,4 +40,3 @@ class Contact extends Core
 		return $p->fetch();
 	}
 }
-?>

@@ -197,4 +197,3 @@ class Database extends PDO {
 		$helper->p($obj, 1);
 	}
 }
-?>

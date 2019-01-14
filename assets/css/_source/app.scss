@@ -247,13 +247,26 @@ html {
 		a:hover {
 			color: #01a3d9;
 		}
-		.span6 {
+		.span4 {
 			line-height: 30px;
 			
 			img {
 				max-height: 30px;
 				display: inline-block;
 				vertical-align: text-top;
+			}
+		}
+		.span4.languages {
+			a {
+				font-size: 0.8em;
+				margin: 0px;
+			}
+			a:after {
+				content: "|";
+				margin: 0px 10px;
+			}
+			a:last-child:after {
+				display: none;
 			}
 		}
 	}

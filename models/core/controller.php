@@ -30,35 +30,33 @@ class Controller extends Core
 			$this->object = new $classString;
 			$this->object->$methodString($glob);
 		}
-		else
-		{
-			if (!isset($glob['pag']))
-			{
-				$glob['pag'] = "cms";
-				$glob['title'] = "home";
-			}
-			
-			if (isset($glob['title']))
-			{
-				$res = $this->db->run("SELECT page_id FROM page WHERE url = '{$glob['title']}'");
-				if (count($res) > 0)
-				{
-					$glob['page_id'] = $res[0]['page_id'];
-				}
-				else
-				{
-					$glob['pag'] = $glob['title'];
-				}
-			}
-			
-			$glob['pag'] = $this->normalizeObjectName($glob['pag']);
-	
-			//$this->helper->p($glob);
-
-			if (!file_exists("models/{$glob['pag']}.php") && !file_exists("models/core/{$glob['pag']}.php")) $glob['pag'] = 'NotFound';
 		
-			$this->object = new $glob['pag'];
+		if (!isset($glob['pag']))
+		{
+			$glob['pag'] = "cms";
+			$glob['title'] = "home";
 		}
+
+		if (isset($glob['title']))
+		{
+			$res = $this->db->run("SELECT page_id FROM page WHERE url = '{$glob['title']}'");
+			if (count($res) > 0)
+			{
+				$glob['page_id'] = $res[0]['page_id'];
+			}
+			else
+			{
+				$glob['pag'] = $glob['title'];
+			}
+		}
+
+		$glob['pag'] = $this->normalizeObjectName($glob['pag']);
+
+		//$this->helper->p($glob);
+
+		if (!file_exists("models/{$glob['pag']}.php") && !file_exists("models/core/{$glob['pag']}.php")) $glob['pag'] = 'NotFound';
+
+		$this->object = new $glob['pag'];
 	}
 	
 	public function run()

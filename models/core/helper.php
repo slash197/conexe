@@ -3,27 +3,67 @@
  * @Author: Slash Web Design
  */
 
-class Helper
+class Language
 {
 	protected $db;
-	protected $timer;
+	public $input = null;
+	public $output = null;
+	public $language = null;
+	public $modifiers = array();
 	
 	function __construct()
 	{
 		global $db;
 		
 		$this->db = $db;
-		$this->startUp();
 	}
 	
-	public function getDescription($type)
+	protected function process()
 	{
-		switch ($type)
+		foreach ($this->modifiers as $value)
 		{
-			case 'payment': return 'Donation';
-			case 'gift card': return 'Gift card';
-			case 'universal fund': return 'Universal fund donation';
+			$this->output = str_replace('{$}', $value, $this->output);
 		}
+		
+		return $this->output;
+	}
+
+	public function translate($options)
+	{
+		$this->input = $options[0];
+		$this->language = isset($_SESSION['language']) ? $_SESSION['language'] : 'base';
+
+		unset($options[0]);
+		
+		if (count($options) > 0) $this->modifiers = $options;
+		
+		if ($this->language === 'base')
+		{
+			$this->output = $this->input;
+		}
+		else
+		{
+			$res = $this->db->run("SELECT {$this->language} FROM language WHERE base = '{$this->input}'");
+			if (count($res)) $this->output = $res[0][$this->language];
+		}
+		
+		return $this->process();
+	}
+}
+
+class Helper
+{
+	protected $db;
+	protected $timer;
+	public $language = null;
+	
+	function __construct()
+	{
+		global $db;
+		
+		$this->db = $db;
+		$this->language = new Language();
+		$this->startUp();
 	}
 	
 	public function genderDD($g)
@@ -47,15 +87,15 @@ class Helper
 		{
 			if ($diff < 60)
 			{
-				return ($diff == 1) ? "{$v} second ago" : "{$v} seconds ago";
+				return ($diff == 1) ? __('1 second ago') : __('{$} seconds ago', $diff);
 			}
 			
 			$v = round($diff / 60);
-			return ($v == 1) ? "{$v} minute ago" : "{$v} minutes ago";
+			return ($v == 1) ? __('1 minute ago') : __('{$} minutes ago', $v);
 		}
 		
 		$v = round($diff / 3600);
-		return ($v == 1) ? "{$v} hour ago" : "{$v} hours ago";
+		return ($v == 1) ? __('1 hour ago') : __('{$} hours ago');
 	}
 
 	public function getRatingHTML($value)
@@ -218,8 +258,6 @@ class Helper
 		{
 			$glob[$key] = $this->sanitizeInput($value);
 		}
-		
-		//$this->createWebhook();
 	}
 	
 	public function timerStart()
@@ -307,7 +345,8 @@ class Helper
 		return str_replace(array('------', '-----', '----', '---', '--'), '-', $str);
 	}
 	
-	public function buildCountryDD($id){
+	public function buildCountryDD($id)
+	{
 		global $db;
 		
 		$out = '';
@@ -322,7 +361,8 @@ class Helper
 		return $out;
 	}
 	
-	public function buildStateDD($id, $countryId){
+	public function buildStateDD($id, $countryId)
+	{
 		global $db;
 		
 		if ($countryId === 0) return '<option>select country</option>';
@@ -437,9 +477,9 @@ class Helper
 				'<a><img src="' . $user->image . '" class="profile h30" />' . $user->fname . '</a><span class="ico ico-keyboard-arrow-down"></span>' . 
 				'<div class="dd">' .
 					'<ul>' .
-						'<li><a href="account">My account</a></li>' .
+						'<li><a href="account">' . __("My account") . '</a></li>' .
 						'<li class="divider"></li>' .
-						'<li><a href="sign-out">Sign out</a></li>' .
+						'<li><a href="sign-out">' . __("Sign out") . '</a></li>' .
 					'</ul>' .
 				'</div>' .
 			'</div>'
@@ -471,7 +511,7 @@ class Helper
 		//add user menu
 		if ($addUser === true)
 		{
-			$out .= ($user != null) ? '<li>' . $this->buildUserMenu() . '</li>' : '<li><a href="sign-up">Sign up</a></li><li><a href="sign-in">Sign in</a></li>';
+			$out .= ($user != null) ? '<li>' . $this->buildUserMenu() . '</li>' : '<li><a href="sign-up">' . __("Sign up") . '</a></li><li><a href="sign-in">' . __("Sign in") . '</a></li>';
 		}
 
 		$out .= '</ul>';

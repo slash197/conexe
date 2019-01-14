@@ -27,7 +27,7 @@ class NotFound extends Core
 		
 		$p = new Parser("404.html");
 		
-		if (!isset($glob['error'])) $glob['error'] = 'You have to sign in to access this page';
+		if (!isset($glob['error'])) $glob['error'] = __('You have to sign in to access this page');
 		
 		$p->parseValue(array(
 			'ACCESS_DENIED'		=>	$this->accessDenied ? $this->helper->buildMessageBox('error', $glob['error']) : ''
@@ -36,4 +36,3 @@ class NotFound extends Core
 		return $p->fetch();
 	}
 }
-?>

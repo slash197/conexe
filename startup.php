@@ -18,5 +18,10 @@ $helper = new Helper();
 $user	= isset($_SESSION['user_id']) ? new User() : null;
 $page   = new Controller();
 
+function __()
+{
+	global $helper;	
+	return $helper->language->translate(func_get_args());
+}
+
 header("Content-type: text/html; charset=utf-8;");
-?>

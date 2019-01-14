@@ -135,13 +135,13 @@ class Uploader {
 	{
         if (!is_writable($uploadDirectory)) return array('error' => "Server error. Upload directory isn't writable.");
 
-        if (!$this->file) return array('error' => 'No files were uploaded.');
+        if (!$this->file) return array('error' => __('No files were uploaded.'));
 
         $size = $this->file->getSize();
 
-        if ($size == 0) return array('error' => 'File is empty');
+        if ($size == 0) return array('error' => __('File is empty'));
 
-        if ($size > $this->sizeLimit) return array('error' => 'File is too large, limit = ' . $this->sizeLimit);
+        if ($size > $this->sizeLimit) return array('error' => __('File is too large, limit is {$}', $this->sizeLimit));
 
         $pathinfo = pathinfo($this->file->getName());
         //$filename = $pathinfo['filename'];
@@ -151,7 +151,7 @@ class Uploader {
         if ($this->allowedExtensions && !in_array(strtolower($ext), $this->allowedExtensions))
 		{
             $these = implode(', ', $this->allowedExtensions);
-            return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
+            return array('error' => __('File has an invalid extension, it should be one of {$}', $these));
         }
 
         $ext = ($ext == '') ? $ext : '.' . $ext;
@@ -167,7 +167,6 @@ class Uploader {
 			);
 		}
 
-		return array('error'=> 'Could not save uploaded file. The upload was cancelled, or server error encountered.');
+		return array('error'=> __('Could not save uploaded file. The upload was cancelled, or server error encountered.'));
     }
 }
-?>

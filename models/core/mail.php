@@ -75,4 +75,3 @@ class Mail
 		return $this->api->client->mail()->send()->post($this->data);
 	}
 }
-?>
