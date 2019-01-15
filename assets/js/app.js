@@ -31,7 +31,6 @@ var
 
 $(document).ready(function(){
 	conexe = new app();
-	
 	conexe.animate();
 	
 	$('.has-popover').popover();
@@ -259,21 +258,13 @@ function sanitizeURL($str)
 		}
 	}
 
-	return stripMultipleDashes($out);
+	return $out.stripDashes();
 }
 
 function escapeRegExp(str)
 {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 };
-
-function stripMultipleDashes($str)
-{
-	$str = $str.replaceAll('-----', '-');
-	$str = $str.replaceAll('----', '-');
-	$str = $str.replaceAll('---', '-');
-	return $str.replaceAll('--', '-');
-}
 
 Array.prototype.hasValue = function($v){
 	for (var $i = 0; $i < this.length; $i++)
@@ -307,14 +298,6 @@ Array.prototype.equals = function (array) {
     return true;
 };
 
-Object.size = function(obj){
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
-
 String.prototype.parseNewLines = function(){
 	return this.replaceAll('\n', '<br />');
 };
@@ -330,9 +313,18 @@ String.prototype.getFileName = function(){
 	return name.replace(id, '').substr(0, this.lastIndexOf("."));
 };
 
-String.prototype.replaceAll = function(find, replace)
-{
+String.prototype.replaceAll = function(find, replace){
 	return this.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+};
+
+String.prototype.stripDashes = function(){
+	var str = this;
+	
+	str = str.replaceAll('-----', '-');
+	str = str.replaceAll('----', '-');
+	str = str.replaceAll('---', '-');
+	
+	return str.replaceAll('--', '-');
 };
 
 String.prototype.toTimeOrDate = function(){
@@ -350,38 +342,6 @@ String.prototype.toTimeOrDate = function(){
 	}
 
 	return d.nice();
-};
-
-Date.prototype.nice = function(short) {
-	var dd = this.getDate();
-	var mm = this.getMonth() + 1;
-	var yyyy = this.getFullYear();
-	
-	if (typeof short !== 'undefined')
-	{
-		if (dd < 10) { dd = '0' + dd; };
-		if (mm < 10) { mm = '0' + mm; };
-		return mm + '/' + dd + '/' + yyyy;
-	}
-	
-	var month = '';
-	switch (mm)
-	{
-		case 1: month = 'January'; break;
-		case 2: month = 'February'; break;
-		case 3: month = 'March'; break;
-		case 4: month = 'April'; break;
-		case 5: month = 'May'; break;
-		case 6: month = 'June'; break;
-		case 7: month = 'July'; break;
-		case 8: month = 'August'; break;
-		case 9: month = 'September'; break;
-		case 10: month = 'October'; break;
-		case 11: month = 'November'; break;
-		case 12: month = 'December'; break;
-	}
-	
-	return month + ' ' + dd + ' ' + yyyy;
 };
 
 String.prototype.initials = function(){
@@ -402,23 +362,8 @@ String.prototype.toDate = function(time){
 	return h + ':' + m + ' ' + d.nice();
 };
 
-Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
-    var n = this,
-    decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
-    decSeparator = decSeparator === undefined ? "." : decSeparator,
-    thouSeparator = thouSeparator === undefined ? "," : thouSeparator,
-    sign = n < 0 ? "-" : "",
-    i = parseInt(n = Math.abs(+n || 0).toFixed(decPlaces)) + "",
-    j = (j = i.length) > 3 ? j % 3 : 0;
-    return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + '<span class="decimal">' + Math.abs(n - i).toFixed(decPlaces).slice(2) + '</span>' : "");
-};
-
 String.prototype.pricify = function(){
 	return parseInt(this, 10).formatMoney(0, ",");
-};
-
-Number.prototype.pricify = function(){
-	return this.toFixed(2).pricify();
 };
 
 String.prototype.toURL = function(){
@@ -454,6 +399,61 @@ String.prototype.toURL = function(){
 	}
 	
 	return $out;
+};
+
+Date.prototype.nice = function(short) {
+	var dd = this.getDate();
+	var mm = this.getMonth() + 1;
+	var yyyy = this.getFullYear();
+	
+	if (typeof short !== 'undefined')
+	{
+		if (dd < 10) { dd = '0' + dd; };
+		if (mm < 10) { mm = '0' + mm; };
+		return mm + '/' + dd + '/' + yyyy;
+	}
+	
+	var month = '';
+	switch (mm)
+	{
+		case 1: month = 'January'; break;
+		case 2: month = 'February'; break;
+		case 3: month = 'March'; break;
+		case 4: month = 'April'; break;
+		case 5: month = 'May'; break;
+		case 6: month = 'June'; break;
+		case 7: month = 'July'; break;
+		case 8: month = 'August'; break;
+		case 9: month = 'September'; break;
+		case 10: month = 'October'; break;
+		case 11: month = 'November'; break;
+		case 12: month = 'December'; break;
+	}
+	
+	return month + ' ' + dd + ' ' + yyyy;
+};
+
+Object.size = function(obj){
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
+    var n = this,
+    decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+    decSeparator = decSeparator === undefined ? "." : decSeparator,
+    thouSeparator = thouSeparator === undefined ? "," : thouSeparator,
+    sign = n < 0 ? "-" : "",
+    i = parseInt(n = Math.abs(+n || 0).toFixed(decPlaces)) + "",
+    j = (j = i.length) > 3 ? j % 3 : 0;
+    return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + '<span class="decimal">' + Math.abs(n - i).toFixed(decPlaces).slice(2) + '</span>' : "");
+};
+
+Number.prototype.pricify = function(){
+	return this.toFixed(2).pricify();
 };
 
 var Base64 = {
