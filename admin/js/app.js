@@ -139,7 +139,7 @@ $(document).on('click', '.menu a[data-toggle="sub-menu"]', function(e){
 	app.initMenu();
 });
 
-$(document).on('click', '.menu ul li a', function(e){
+$(document).on('click', '.menu ul li a, .load-page', function(e){
 	e.preventDefault();
 	
 	if (typeof $(this).attr('data-list') === 'undefined') return false;
@@ -150,13 +150,14 @@ $(document).on('click', '.menu ul li a', function(e){
 		return false;
 	}
 	
-	app.page.name = $(this).attr('data-list'),
+	app.page.name = $(this).attr('data-list');
 	app.page.act = 'getList';
 	app.page.id = '';
 	app.page.param.offset = 0;
 	app.page.param.filter = '';
 	app.page.param.sort = '';
 	app.page.param.order = '';
+	app.page.param.key = $(this).attr('data-key');
 	app.loadPage();
 	app.hideMenuIfMobile();
 });

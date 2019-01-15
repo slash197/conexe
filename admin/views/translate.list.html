@@ -1,0 +1,39 @@
+<div class="box w100">
+	<h2>{PAGE_TITLE}</h2>
+	<h4>Manage language expressions</h4>
+	
+	<div class="toolbar clearfix">
+		<div class="pull-right">
+			<input type="text" name="filter-term" placeholder="Search or filter list items" value="{FILTER}" />
+		</div>
+	</div>
+	
+	<div class="table-holder">
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>English</th>
+					<th>Translated</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- BEGIN DYNAMIC BLOCK: item -->
+				<tr>
+					<td></td>
+					<td>{ID}</td>
+					<td><a href="#" data-toggle="item" data-id="{ID}">{BASE}</a></td>
+					<td>{EXPRESSION}</td>
+				</tr>
+				<!-- END DYNAMIC BLOCK: item -->
+				{EMPTY}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">{PAGINATION}</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
