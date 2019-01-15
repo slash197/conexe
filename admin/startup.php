@@ -16,5 +16,3 @@ $db		= new Database("mysql:host={$config['host']};dbname={$config['database']}",
 $helper = new Helper();
 
 header("Content-type: text/html; charset=utf-8;");
-
-?>

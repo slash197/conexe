@@ -194,6 +194,14 @@ class Database extends PDO {
 			}
 		}
 		
-		$helper->p($obj, 1);
+		if (isset($helper))
+		{
+			$helper->p($obj, 1);
+		}
+		else
+		{
+			var_dump($obj);
+			die();
+		}
 	}
 }

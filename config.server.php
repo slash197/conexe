@@ -4,14 +4,14 @@
  */
 
 $config = array(
-	'host'				=>  "mysql.slashwebdesign.studio",
-	'username'			=>  "conexe",
-	'password'			=>  "P@ssword1234!",
-	'database'			=>  "conexe",
+	'host'				=>  "sql.slashwebdesign.studio",
+	'username'			=>  "mysqlswdroot",
+	'password'			=>  "Backslash85",
+	'database'			=>  "conexe_v2",
 	'site_url'			=>	"https://slashwebdesign.studio/conexe/",
 	
 	'site_name'			=>	"Conexe",
-	'debug'				=>	false,
+	'debug'				=>	true,
 	'live'				=>	true,
 
 	'meta_title'		=>	"Conexe",
