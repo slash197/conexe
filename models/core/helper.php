@@ -499,9 +499,9 @@ class Helper
 				'<a><img src="' . $user->image . '" class="profile h30" />' . $user->fname . '</a><span class="ico ico-keyboard-arrow-down"></span>' . 
 				'<div class="dd">' .
 					'<ul>' .
-						'<li><a href="account">' . __("My account") . '</a></li>' .
+						'<li><a href="account">' . __('My account') . '</a></li>' .
 						'<li class="divider"></li>' .
-						'<li><a href="sign-out">' . __("Sign out") . '</a></li>' .
+						'<li><a href="sign-out">' . __('Sign out') . '</a></li>' .
 					'</ul>' .
 				'</div>' .
 			'</div>'
@@ -533,7 +533,7 @@ class Helper
 		//add user menu
 		if ($addUser === true)
 		{
-			$out .= ($user != null) ? '<li>' . $this->buildUserMenu() . '</li>' : '<li><a href="sign-up">' . __("Sign up") . '</a></li><li><a href="sign-in">' . __("Sign in") . '</a></li>';
+			$out .= ($user != null) ? '<li>' . $this->buildUserMenu() . '</li>' : '<li><a href="sign-up">' . __('Sign up') . '</a></li><li><a href="sign-in">' . __('Sign in') . '</a></li>';
 		}
 
 		$out .= '</ul>';

@@ -67,5 +67,105 @@ class auth
 		
 		header("Location: sign-in");
     }
+	
+	function save($str)
+	{
+		global $db;
+		
+		$res = $db->run("SELECT id FROM language WHERE base = '{$str}'");
+
+		if (count($res) === 0) $db->insert("language", array('base' => $str));
+	}
+	
+	function searchJS($directory)
+	{
+		global $helper;
+		
+		$helper->p("searching for files in {$directory}");
+		foreach (glob("{$directory}*") as $file)
+		{
+			if ($file == '.' || $file == '..') continue;
+
+			if (is_dir($file))
+			{
+				$this->searchJS("{$file}/");
+			}
+			else if (substr($file, -3) === '.js')
+			{
+				$this->processFileJS($file);
+			}
+			else if (substr($file, -5) === '.html')
+			{
+				$this->processFileHTML($file);
+			}
+			else if (substr($file, -4) === '.php')
+			{
+				$this->processFilePHP($file);
+			}
+		}
+	}
+
+	function processFileJS($file)
+	{
+		global $helper;
+		
+		$helper->p("processing file {$file}");
+		
+		$matches = array();
+		
+		preg_match_all("/_\('([^']*)'\)/", file_get_contents($file), $matches);
+
+		if (isset($matches[0]))
+		{
+			foreach ($matches[1] as $m)
+			{
+				$this->save($m);
+			}
+		}
+	}
+
+	function processFilePHP($file)
+	{
+		global $helper;
+		
+		$helper->p("processing file {$file}");
+		
+		$matches = array();
+		
+		preg_match_all("/_\('([^']*)'\)/", file_get_contents($file), $matches);
+
+		if (isset($matches[0]))
+		{
+			foreach ($matches[1] as $m)
+			{
+				$this->save($m);
+			}
+		}
+	}
+
+	function processFileHTML($file)
+	{
+		global $helper;
+		
+		$helper->p("processing file {$file}");
+		
+		$matches = array();
+		
+		preg_match_all('/data-token="\s*([^"]*)\s*"/', file_get_contents($file), $matches);
+
+		if (isset($matches[0]))
+		{
+			foreach ($matches[1] as $m)
+			{
+				$this->save($m);
+			}
+		}
+	}
+	
+	function runScan()
+	{
+		$this->searchJS('../assets/js/');
+		$this->searchJS('../models/');
+		die();
+	}
 }
-?>
