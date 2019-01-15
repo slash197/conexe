@@ -6,6 +6,8 @@
 var client = {
 
 	initSignIn: function(r){
+		this.buildModal('signin');
+		
 		$('.access.signup, .access.forgot, #notify-modal').modal('hide');
 		$('.access.signin').modal('show');
 
@@ -18,6 +20,8 @@ var client = {
 			window.location.href = 'account';
 			return false;
 		}
+		
+		this.buildModal('signup');
 		
 		$('.access.signin, .access.forgot, #notify-modal').modal('hide');
 		$('.access.signup').modal('show');
@@ -36,10 +40,10 @@ var client = {
 				password: password
 			},
 			success: function(r){
-				$('.access.signin .btn-info').removeClass('disabled').html('Sign in');
+				$('.access.signin .btn-info').removeClass('disabled').html(__('Sign in'));
 				if (r.status === false)
 				{
-					pp('Sign in', r.message);
+					pp(__('Sign in'), r.message);
 					return false;
 				}
 
@@ -57,8 +61,8 @@ var client = {
 				email: email
 			},
 			error: function(){
-				$('.access.signup .btn-info').removeClass('disabled').html('Sign up');
-				pp('Error', 'Please try again later');
+				$('.access.signup .btn-info').removeClass('disabled').html(__('Sign up'));
+				pp(__('Error'), __('Please try again later'));
 			},
 			success: function(r){
 				if (r.status)
@@ -74,11 +78,11 @@ var client = {
 							password: password
 						},
 						success: function(r){
-							$('.access.signup .btn-info').removeClass('disabled').html('Sign up');
+							$('.access.signup .btn-info').removeClass('disabled').html(__('Sign up'));
 							
 							if (r.status === false)
 							{
-								pp('Sign in', r.message);
+								pp(__('Sign in'), r.message);
 								return false;
 							}
 
@@ -88,9 +92,82 @@ var client = {
 					return false;
 				}
 
-				pp('Error', r.message);
+				pp(__('Error'), r.message);
 			}
 		});
+	},
+	
+	buildModal: function(type){
+		var html = {
+			signin: 
+				'<div class="modal hide access signin">' +
+					'<div class="modal-body">' +
+						'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+						'<div class="row-fluid">' +
+							'<div class="span6 text-center">' +
+								'<img src="assets/img/logo.big.light.png" alt="conexe logo" />' +
+							'</div>' +
+							'<div class="span6 text-center">' +
+								'<h1>' + __('Sign in') + '</h1>' +
+								'<h2>' + __('Let\'s do something') + '</h2>' +
+								'<form>' +
+									'<input type="text" name="email" placeholder="' + __('Email') + '" />' +
+									'<input type="password" name="password" placeholder="' + __('Password') + '" />' +
+									'<button class="btn btn-info">' + __('Sign in') + '</button>' +
+								'</form>' +
+								'<p><a href="sign-up">' + __('Not a member?') + '</a> <a href="forgot">' + __('Forgot your password?') + '</a></p>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>',
+			signup: 
+				'<div class="modal hide access signup">' +
+					'<div class="modal-body">' +
+						'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+						'<div class="row-fluid">' +
+							'<div class="span6 text-center">' +
+								'<img src="assets/img/logo.big.light.png" alt="conexe logo" />' +
+							'</div>' +
+							'<div class="span6 text-center">' +
+								'<h1>' + __('Sign up') + '</h1>' +
+								'<h2>' + __('Create your account on Conexe<br />and get access to all features') + '</h2>' +
+								'<form>' +
+									'<p>' +
+										'<label><input type="radio" name="type" class="type-customer" value="customer" /> ' + __('as customer') + '</label>' +
+										'<label><input type="radio" name="type" class="type-vendor" value="vendor" /> ' + __('as vendor') + '</label>' +
+									'</p>' +
+									'<input type="text" name="fname" placeholder="' + __('First name') + '" />' +
+									'<input type="text" name="lname" placeholder="' + __('Last name') + '" />' +
+									'<input type="text" name="email" placeholder="' + __('Email address') + '" />' +
+									'<input type="password" name="password" placeholder="' + __('Password') + '" />' +
+									'<p><button class="btn btn-info">' + __('sign up') + '</button></p>' +
+								'</form>' +
+								'<p><a href="sign-in">' + __('Already have an account?') + '</a></p>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>',
+			forgot:
+				'<div class="modal hide access forgot">' +
+					'<div class="modal-body">' +
+						'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+						'<div class="row-fluid">' +
+							'<div class="span6 text-center">' +
+								'<img src="assets/img/logo.big.light.png" alt="conexe logo" />' +
+							'</div>' +
+							'<div class="span6 text-center">' +
+								'<h1>' + __('Forgot your password') + '</h1>' +
+								'<h2>' + __('We will send you a new password<br />once you log in you can update it') + '</h2>' +
+								'<p><input type="text" name="pass-email" placeholder="' + __('Email') + '" /></p>' +
+								'<p><button class="btn btn-info">' + __('Reset password') + '</button></p>' +
+								'<p><a href="sign-in">' + __('Sign in') + '</a> ' + __('or') + ' <a href="sign-in">' + __('Sign up') + '</a></p>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>'
+		};
+		
+		if (!$('.' + type).length) $('body').append(html[type]);
 	}
 };
 
@@ -153,12 +230,11 @@ $(document).on('click', 'a[href="sign-in"]', function(e){
 });
 
 $(document).on('click', '.forgot .btn', function(){
-
 	if ($(this).hasClass('disabled')) return false;
 
 	if ($('.forgot input[name="pass-email"]').val() === '')
 	{
-		pp('Reset my password', 'Please fill in your email address');
+		pp(__('Reset my password'), __('Please fill in your email address'));
 		return false;
 	}
 
@@ -169,15 +245,18 @@ $(document).on('click', '.forgot .btn', function(){
 			email: $('.forgot input[name="pass-email"]').val()
 		},
 		success: function(r){
-			$('.forgot .btn').html('Reset password').removeClass('disabled');
+			$('.forgot .btn').html(__('Reset password')).removeClass('disabled');
 			$('.access.forgot').modal('toggle');
-			pp('New password', r.message);
+			pp(__('New password'), r.message);
 		}
 	});
 });
 
 $(document).on('click', 'a[href="forgot"]', function(e){
 	e.preventDefault();
+
+	client.buildModal('forgot');
+		
 	$('.access.signin').modal('hide');
 	$('.access.forgot').modal('show');
 });

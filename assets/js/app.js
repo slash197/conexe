@@ -4,14 +4,91 @@
 */
 
 var 
-	conexe = null,
-	app = function(){
+	__ = null,
+			
+	Language = function(){
+		this._token = '';
+		this._args = null;
+		
+		/*
+		 * find the string token in current language set to process
+		 * @returns {void}
+		 */
+		this._find = function(){
+			if (global.language.active !== 'base')
+			{
+				for (var key in global.language.db)
+				{
+					if (key.toLowerCase() === this._token.toLowerCase())
+					{
+						if (global.language.db[key][global.language.active]) this._token = global.language.db[key][global.language.active];
+						break;
+					}
+				}
+			}
+			
+			this._process();
+		};
+		
+		/*
+		 * replace all {$} variable occurances within the token
+		 * @returns {void}
+		 */
+		this._process = function(){
+			for (var i = 1; i < this._args.length; i++)
+			{
+				this._token = this._token.replace('{$}', this._args[i]);
+			}
+		};
+		
+		/*
+		 * Translate input string from English to current language
+		 * @param {string} input string to translate
+		 * @param {string|integer} any additional parameters will be replaced in the input string where {$} is found
+		 *							eg. App.translate("Current setting is {$} minutes", 10) will be "Current setting is 10 minutes"
+		 * @returns {string} translated string
+		 */
+		this._translate = function(token){
+			if (typeof token !== 'string') token = token.toString();
+			
+			this._token = token;
+			this._args = arguments;
+
+			this._find();
+			
+			return this._token;
+		}.bind(this);
+	},
+			
+	App = function(){
+		
+		this.language = new Language();
 		
 		this.init = function(){
-			lg('initializing');
+			__ = this.language._translate;
 			
 			$('.hero').css({
 				height: $('.hero').width() / 2.4
+			});
+			
+			jQuery.extend(jQuery.validator.messages, {
+				required: __("Please fill in this field"),
+				remote: __("Please fix this field."),
+				email: __("Please enter a valid email address."),
+				url: __("Please enter a valid URL."),
+				date: __("Please enter a valid date."),
+				dateISO: __("Please enter a valid date (ISO)."),
+				number: __("Please enter a valid number."),
+				digits: __("Please enter only digits."),
+				creditcard: __("Please enter a valid credit card number."),
+				equalTo: __("Please enter the same value again."),
+				accept: __("Please enter a value with a valid extension."),
+				maxlength: jQuery.validator.format(__("Please enter no more than {0} characters.")),
+				minlength: jQuery.validator.format(__("Please enter at least {0} characters.")),
+				rangelength: jQuery.validator.format(__("Please enter a value between {0} and {1} characters long.")),
+				range: jQuery.validator.format(__("Please enter a value between {0} and {1}.")),
+				max: jQuery.validator.format(__("Please enter a value less than or equal to {0}.")),
+				min: jQuery.validator.format(__("Please enter a value greater than or equal to {0}."))
 			});
 		};
 		
@@ -26,12 +103,12 @@ var
 		};
 		
 		this.init();
-	};
-
+	},
+			
+	Conexe = new App();
 
 $(document).ready(function(){
-	conexe = new app();
-	conexe.animate();
+	Conexe.animate();
 	
 	$('.has-popover').popover();
 	$('.has-tooltip').tooltip();
@@ -43,7 +120,7 @@ $(document).ready(function(){
 	}, 'right');
 });
 
-$(window).on('resize', conexe.init);
+$(window).on('resize', Conexe.init);
 
 $(document).on('click', '.user-menu > a', function(e){
 	e.preventDefault();
@@ -66,26 +143,6 @@ $(document).on('click', '.debug-holder .controller', function(){
 		//open
 		$('.debug-holder').animate({height: 600}, 250);
 	}
-});
-
-jQuery.extend(jQuery.validator.messages, {
-    required: "Please fill in this field",
-    remote: "Please fix this field.",
-    email: "Please enter a valid email address.",
-    url: "Please enter a valid URL.",
-    date: "Please enter a valid date.",
-    dateISO: "Please enter a valid date (ISO).",
-    number: "Please enter a valid number.",
-    digits: "Please enter only digits.",
-    creditcard: "Please enter a valid credit card number.",
-    equalTo: "Please enter the same value again.",
-    accept: "Please enter a value with a valid extension.",
-    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
-    minlength: jQuery.validator.format("Please enter at least {0} characters."),
-    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
-    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
-    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
-    min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 });
 
 function sortElements(items, attribute){

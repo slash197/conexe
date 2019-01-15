@@ -6,7 +6,7 @@
 var xhr = null;
 
 $(document).on('click', '.account .btn-delete', function(e){
-	pp('Warning', 'Are you sure you want to delete your account?', [
+	pp(__('Warning'), __('Are you sure you want to delete your account?'), [
 		{label: 'Delete', cls: ' btn-info', callback: function(){	window.location.href = '?act=account-delete'; } },
 		{label: 'Cancel', cls: '', callback: function(){} }
 	]);
@@ -29,7 +29,7 @@ $(document).on('keyup', 'input[name="location"]', function(){
 				
 	if (!$('.location-dd .holder').length) $('.location-dd').append('<ul class="holder" />');
 	
-	$('.location-dd .holder').html('<div class="spinner blue s40"></div> searching...');
+	$('.location-dd .holder').html('<div class="spinner blue s40"></div> ' + __('searching...'));
 	
 	if (xhr !== null) xhr.abort();
 	
@@ -55,7 +55,7 @@ $(document).on('keyup', 'input[name="location"]', function(){
 						'</li>';
 				}
 				
-				if (!r.results.length) html = '<li>Unrecognized location</li>';
+				if (!r.results.length) html = '<li>' + __('Unrecognized location') + '</li>';
 				
 				$('.location-dd .holder').html(html).show();
 			}

@@ -41,6 +41,10 @@ $p->parseValue(array(
 								'isHome'	=>	(isset($glob['title']) && ($glob['title'] == "home")) ? 1 : 0,
 								'glob'		=>	$glob,
 								'user'		=>	$user,
+								'language'	=>	array(
+									'active'	=>	$helper->language->language,
+									'db'		=>	$helper->language->store
+								),
 								'assets'	=>	$page->assets
 							)),
 	'USER_IMAGE'		=>	($user !== null) ? $user->image : '',

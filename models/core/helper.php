@@ -6,6 +6,7 @@
 class Language
 {
 	protected $db;
+	public $store = array();
 	public $input = null;
 	public $output = null;
 	public $language = null;
@@ -16,6 +17,18 @@ class Language
 		global $db;
 		
 		$this->db = $db;
+		$this->language = isset($_SESSION['language']) ? $_SESSION['language'] : isset($_COOKIE['conexe_language']) ? $_COOKIE['conexe_language'] : 'base';
+		
+		$res = $this->db->run("SELECT * FROM language");
+		foreach ($res as $expression)
+		{
+			$key = $expression['base'];
+			
+			unset($expression['base']);
+			unset($expression['id']);
+			
+			$this->store[$key] = $expression;
+		}
 	}
 	
 	protected function process()
@@ -27,11 +40,20 @@ class Language
 		
 		return $this->output;
 	}
+	
+	public function change($ld)
+	{
+		if (isset($ld['l']))
+		{
+			$_SESSION['language'] = $ld['l'];
+			$this->language = $_SESSION['language'];
+			setcookie("conexe_language", $this->language, time() + 31536000);
+		}
+	}
 
 	public function translate($options)
 	{
 		$this->input = $options[0];
-		$this->language = isset($_SESSION['language']) ? $_SESSION['language'] : 'base';
 
 		unset($options[0]);
 		

@@ -21,7 +21,7 @@ class General extends Core
 	
 	public function switchLanguage(&$ld)
 	{
-		if (isset($ld['l'])) $_SESSION['language'] = $ld['l'];
+		$this->helper->language->change($ld);
 	}
 	
 	public function upload()
